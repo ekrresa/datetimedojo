@@ -17,7 +17,14 @@ export default function Home() {
           className="flex rounded-lg border p-2"
         >
           <DateInput className="flex flex-1">
-            {segment => <DateSegment segment={segment} />}
+            {segment => (
+              <DateSegment
+                className={({ isPlaceholder }) =>
+                  isPlaceholder ? 'text-gray-400' : 'text-gray-600'
+                }
+                segment={segment}
+              />
+            )}
           </DateInput>
           <CalendarDays className="h-6 w-6" />
         </DateField>
@@ -28,16 +35,16 @@ export default function Home() {
               <p className="font-semibold text-gray-700">Timestamp:</p>
               <div className="flex items-center">
                 <p className="mr-2 font-mono text-gray-600">1633027200</p>
-                <Button aria-label="Copy" className="p-1">
+                <Button aria-label="Copy" className="rounded-lg border p-1.5">
                   <CopyIcon className="h-4 w-4" />
                 </Button>
               </div>
             </div>
             <div className="flex items-center justify-between">
               <p className="font-semibold text-gray-700">Unix Timestamp:</p>
-              <div className="flex items-center">
-                <p className="mr-2 font-mono text-gray-600">1633027200</p>
-                <Button aria-label="Copy" className="p-1">
+              <div className="flex items-center gap-3">
+                <p className="font-mono text-gray-600">1633027200</p>
+                <Button aria-label="Copy" className="rounded-lg border p-1.5">
                   <CopyIcon className="h-4 w-4" />
                 </Button>
               </div>
@@ -46,7 +53,7 @@ export default function Home() {
               <span className="font-semibold text-gray-700">Date String:</span>
               <div className="flex items-center">
                 <span className="mr-2 font-mono text-gray-600">2021-09-30T00:00:00Z</span>
-                <Button className="p-1">
+                <Button className="rounded-lg border p-1.5">
                   <CopyIcon className="h-4 w-4" />
                 </Button>
               </div>
@@ -55,7 +62,7 @@ export default function Home() {
               <span className="font-semibold text-gray-700">Date (UTC):</span>
               <div className="flex items-center">
                 <p className="mr-2 font-mono text-gray-600">Thu, 30 Sep 2021 00:00:00 GMT</p>
-                <Button className="p-1">
+                <Button className="rounded-lg border p-1.5">
                   <CopyIcon className="h-4 w-4" />
                 </Button>
               </div>
@@ -64,7 +71,7 @@ export default function Home() {
               <span className="font-semibold text-gray-700">ISO 8601:</span>
               <div className="flex items-center">
                 <span className="mr-2 font-mono text-gray-600">2021-09-30T00:00:00.000Z</span>
-                <Button className="p-1">
+                <Button className="rounded-lg border p-1.5">
                   <CopyIcon className="h-4 w-4" />
                 </Button>
               </div>
@@ -73,7 +80,7 @@ export default function Home() {
               <span className="font-semibold text-gray-700">JS Date String:</span>
               <div className="flex items-center">
                 <span className="mr-2 font-mono text-gray-600">Thu, 30 Sep 2021 00:00:00 GMT</span>
-                <Button className="p-1">
+                <Button className="rounded-lg border p-1.5">
                   <CopyIcon className="h-4 w-4" />
                 </Button>
               </div>
@@ -82,7 +89,7 @@ export default function Home() {
               <span className="font-semibold text-gray-700">Date (Excel):</span>
               <div className="flex items-center">
                 <span className="mr-2 font-mono text-gray-600">Thu, 30 Sep 2021 00:00:00 GMT</span>
-                <Button className="p-1">
+                <Button className="rounded-lg border p-1.5">
                   <CopyIcon className="h-4 w-4" />
                 </Button>
               </div>
