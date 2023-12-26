@@ -11,6 +11,7 @@
   "dependencies": {
     "lucide-react": "^0.302.0",
     "next": "14.0.4",
+    "next-seo": "^6.4.0",
     "react": "^18",
     "react-aria-components": "^1.0.0",
     "react-dom": "^18"
