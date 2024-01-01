@@ -17,8 +17,8 @@ export function DateDisplay(props: Props) {
         <span className="min-w-0 truncate font-mono tabular-nums text-gray-600">
           {formattedDate}
         </span>
-        <Button>
-          <CopyIcon className="h-4 w-4" />
+        <Button className="pr-2">
+          <CopyIcon color="#4a4a42" size={16} strokeWidth={1.5} />
         </Button>
       </div>
     </div>
