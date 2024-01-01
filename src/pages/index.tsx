@@ -77,12 +77,12 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="mt-auto w-full border-t border-t-desert-200 bg-desert-100 px-5 py-4">
+      <footer className="mt-auto w-full border-t bg-desert-100 px-5 py-4">
         <div className="mx-auto flex max-w-[50rem] flex-col items-center justify-center gap-2 text-sm text-gray-500 sm:flex-row">
           <p className="uppercase"> &#169; {new Date().getFullYear()}</p>
           <p className="hidden uppercase sm:block">
             <a href="https://ekrresa.com" target="_blank" rel="noreferrer noopener">
-              Ochuko Ekrresa
+              Built by Ochuko Ekrresa
             </a>
           </p>
         </div>
