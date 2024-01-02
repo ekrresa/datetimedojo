@@ -1,6 +1,4 @@
 import * as React from 'react'
-import { Button, DateField, DateInput, DateSegment } from 'react-aria-components'
-import { CalendarDays } from 'lucide-react'
 import {
   formatISO,
   formatISO9075,
@@ -15,13 +13,12 @@ import { useCurrentTime } from '@/hooks/useCurrentTime'
 import { convertDateToExcelFormat } from '@/helpers'
 import { DateDisplay } from '@/components/DateDisplay'
 import { useIsMounted } from '@/hooks/useIsMounted'
+import DateInputTabs from '@/components/DateInputTabs'
 
 export default function Home() {
   const { currentTime } = useCurrentTime()
   const isMounted = useIsMounted()
 
-  const time = getTime(currentTime)
-  const unixTime = getUnixTime(currentTime)
   const ISODate = parseISO(currentTime.toISOString())
 
   return (
@@ -32,34 +29,18 @@ export default function Home() {
           Transform dates with ease. Enter a date and choose from a variety of formats below.
         </p>
 
-        <div className="mb-40 mt-10 w-full max-w-[40rem] rounded-xl border border-desert-200 bg-white p-4 sm:shadow-[rgba(0,0,0,0.04)_0px_8px_8px]">
-          <DateField
-            granularity="minute"
-            aria-label="Date Input"
-            className="flex items-center rounded-lg border p-2"
-          >
-            <DateInput className="flex flex-1">
-              {segment => (
-                <DateSegment
-                  className={({ isPlaceholder }) =>
-                    `relative type-literal:px-2 focus:outline-none ${
-                      isPlaceholder ? 'text-gray-400' : 'text-gray-600'
-                    }`
-                  }
-                  segment={segment}
-                />
-              )}
-            </DateInput>
-            <CalendarDays color="#4a4a42" size={20} strokeWidth={1.5} />
-          </DateField>
+        <div className="mb-40 mt-10 w-full max-w-[40rem] overflow-hidden rounded-xl border border-desert-200 bg-white sm:shadow-[rgba(0,0,0,0.04)_0px_8px_8px]">
+          <div className="bg-desert-50 p-4">
+            <DateInputTabs />
+          </div>
 
           <React.Suspense key={isMounted ? 'client' : 'server'}>
-            <div className="border-gray-100 pt-2">
+            <div className="mt-6 border-gray-100 p-4 transition-all ease-out">
               <div className="flex flex-col gap-6 text-sm">
                 <DateDisplay dateFormat="Date String" formattedDate={ISODate.toLocaleString()} />
                 <DateDisplay dateFormat="Locale Date String" formattedDate={ISODate.toString()} />
-                <DateDisplay dateFormat="Timestamp" formattedDate={time} />
-                <DateDisplay dateFormat="Unix Timestamp" formattedDate={unixTime} />
+                <DateDisplay dateFormat="Timestamp" formattedDate={getTime(currentTime)} />
+                <DateDisplay dateFormat="Unix Timestamp" formattedDate={getUnixTime(currentTime)} />
                 <DateDisplay dateFormat="Date (UTC)" formattedDate={ISODate.toUTCString()} />
 
                 <DateDisplay dateFormat="Date (ISO 8601)" formattedDate={formatISO(ISODate)} />
