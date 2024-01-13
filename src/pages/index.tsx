@@ -36,7 +36,7 @@ export default function Home() {
 
           <React.Suspense key={isMounted ? 'client' : 'server'}>
             <div className="mt-6 border-gray-100 p-4 transition-all ease-out">
-              <div className="flex flex-col gap-6 text-sm">
+              <div className="flex flex-col gap-4 text-sm">
                 <DateDisplay dateFormat="Date String" formattedDate={ISODate.toLocaleString()} />
                 <DateDisplay dateFormat="Locale Date String" formattedDate={ISODate.toString()} />
                 <DateDisplay dateFormat="Timestamp" formattedDate={getTime(currentTime)} />

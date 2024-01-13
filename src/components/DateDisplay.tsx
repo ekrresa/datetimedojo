@@ -1,5 +1,6 @@
 import { CopyIcon } from 'lucide-react'
 import { Button } from 'react-aria-components'
+import { toast } from 'sonner'
 
 interface Props {
   dateFormat: string
@@ -17,7 +18,13 @@ export function DateDisplay(props: Props) {
         <span className="min-w-0 truncate font-mono tabular-nums text-gray-600">
           {formattedDate}
         </span>
-        <Button className="pr-2">
+        <Button
+          className="rounded-md p-2 hover:bg-gray-50"
+          onPress={() => {
+            navigator.clipboard.writeText(formattedDate.toString())
+            toast('Copied to clipboard')
+          }}
+        >
           <CopyIcon color="#4a4a42" size={16} strokeWidth={1.5} />
         </Button>
       </div>
