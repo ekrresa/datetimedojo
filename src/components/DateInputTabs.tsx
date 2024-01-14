@@ -1,3 +1,4 @@
+import { parseDateString } from '@/helpers'
 import * as React from 'react'
 import {
   DateField,
@@ -17,8 +18,6 @@ interface Props {
 }
 export default function DateInputTabs(props: Props) {
   const { onDateTimeChange } = props
-
-  const [value, setValue] = React.useState<Date | null>(null)
 
   return (
     <Tabs className="flex orientation-horizontal:flex-col">
@@ -67,12 +66,23 @@ export default function DateInputTabs(props: Props) {
       <TabPanel id="paste" className="mt-2 flex gap-1 outline-none">
         <TextField
           aria-label="Enter your date string"
-          className="flex-1 overflow-hidden rounded-md border"
+          className="flex flex-1 flex-col"
+          onChange={val => {
+            if (val.length > 0) {
+              onDateTimeChange(parseDateString(val))
+            } else {
+              onDateTimeChange(null)
+            }
+            console.log(val)
+          }}
         >
           <Input
-            className="w-full min-w-0 bg-white p-1.5 text-desert-900 outline-none placeholder:text-desert-500"
+            className="w-full min-w-0 rounded-md border bg-white p-1.5 text-desert-900 outline-none placeholder:text-desert-500"
             placeholder="Input your date string"
           />
+          <Text className="mt-1 text-xs text-gray-600" slot="description">
+            Paste a date string in various formats.
+          </Text>
         </TextField>
       </TabPanel>
     </Tabs>
