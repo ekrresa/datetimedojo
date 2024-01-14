@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   DateField,
   DateInput,
@@ -8,10 +9,17 @@ import {
   TabPanel,
   Tabs,
   TextField,
+  Text,
 } from 'react-aria-components'
-import { CalendarDays } from 'lucide-react'
 
-export default function DateInputTabs() {
+interface Props {
+  onDateTimeChange: (date: Date | null) => void
+}
+export default function DateInputTabs(props: Props) {
+  const { onDateTimeChange } = props
+
+  const [value, setValue] = React.useState<Date | null>(null)
+
   return (
     <Tabs className="flex orientation-horizontal:flex-col">
       <TabList className="flex" aria-label="Date inputs">
@@ -19,40 +27,47 @@ export default function DateInputTabs() {
           id="pick"
           className="relative flex-1 cursor-pointer border-b-[1.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
         >
-          Pick a date
+          Enter a date
         </Tab>
         <Tab
           id="paste"
           className="relative flex-1 cursor-pointer border-b-[1.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
         >
-          Paste a date
+          Paste a date string
         </Tab>
       </TabList>
-      <TabPanel id="pick" className="mt-2 outline-none">
+      <TabPanel id="pick" className="mt-2 flex items-start gap-1 outline-none">
         <DateField
-          granularity="minute"
+          granularity="second"
           aria-label="Date Input"
-          className="flex items-center rounded-lg border bg-white p-1.5"
+          className="flex flex-1 flex-col"
+          onChange={dateValue => {
+            onDateTimeChange(dateValue ? new Date(dateValue.toString()) : null)
+          }}
+          autoFocus
         >
-          <DateInput className="flex flex-1">
+          <DateInput className="flex flex-1 rounded-md border bg-white p-1.5">
             {segment => (
               <DateSegment
-                className={({ isPlaceholder }) =>
-                  `relative type-literal:px-2 focus:outline-none ${
-                    isPlaceholder ? 'text-desert-400' : 'text-desert-800'
-                  }`
+                className={({ isPlaceholder, isFocused }) =>
+                  `relative tabular-nums type-literal:px-2 focus:outline-none ${
+                    isPlaceholder ? 'italic text-desert-400' : 'text-desert-800'
+                  } ${isFocused ? 'rounded-sm bg-[#2C497F] text-white caret-transparent' : ''}`
                 }
                 segment={segment}
               />
             )}
           </DateInput>
-          <CalendarDays color="#4a4a42" size={20} strokeWidth={1.5} />
+          <Text className="mt-1 text-xs text-gray-600" slot="description">
+            Input a date and time by filling all segments.
+          </Text>
         </DateField>
       </TabPanel>
-      <TabPanel id="paste" className="mt-2 outline-none">
+
+      <TabPanel id="paste" className="mt-2 flex gap-1 outline-none">
         <TextField
           aria-label="Enter your date string"
-          className="overflow-hidden rounded-lg border"
+          className="flex-1 overflow-hidden rounded-md border"
         >
           <Input
             className="w-full min-w-0 bg-white p-1.5 text-desert-900 outline-none placeholder:text-desert-500"

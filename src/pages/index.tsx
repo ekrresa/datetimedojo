@@ -19,7 +19,9 @@ export default function Home() {
   const { currentTime } = useCurrentTime()
   const isMounted = useIsMounted()
 
-  const ISODate = parseISO(currentTime.toISOString())
+  const [selectedDateTime, setSelectedDateTime] = React.useState<Date | null>(null)
+
+  const ISODate = parseISO(selectedDateTime?.toISOString() ?? currentTime.toISOString())
 
   return (
     <section className="flex min-h-svh flex-col pt-24">
@@ -29,9 +31,9 @@ export default function Home() {
           Transform dates with ease. Enter a date and choose from a variety of formats below.
         </p>
 
-        <div className="mb-40 mt-10 w-full max-w-[40rem] overflow-hidden rounded-xl border border-desert-200 bg-white sm:shadow-[rgba(0,0,0,0.04)_0px_8px_8px]">
+        <div className="mb-40 mt-10 w-full max-w-[38rem] overflow-hidden rounded-xl border border-desert-200 bg-white sm:shadow-[rgba(0,0,0,0.04)_0px_8px_8px]">
           <div className="bg-desert-50 p-4">
-            <DateInputTabs />
+            <DateInputTabs onDateTimeChange={setSelectedDateTime} />
           </div>
 
           <React.Suspense key={isMounted ? 'client' : 'server'}>
@@ -39,8 +41,8 @@ export default function Home() {
               <div className="flex flex-col gap-4 text-sm">
                 <DateDisplay dateFormat="Date String" formattedDate={ISODate.toLocaleString()} />
                 <DateDisplay dateFormat="Locale Date String" formattedDate={ISODate.toString()} />
-                <DateDisplay dateFormat="Timestamp" formattedDate={getTime(currentTime)} />
-                <DateDisplay dateFormat="Unix Timestamp" formattedDate={getUnixTime(currentTime)} />
+                <DateDisplay dateFormat="Timestamp" formattedDate={getTime(ISODate)} />
+                <DateDisplay dateFormat="Unix Timestamp" formattedDate={getUnixTime(ISODate)} />
                 <DateDisplay dateFormat="Date (UTC)" formattedDate={ISODate.toUTCString()} />
 
                 <DateDisplay dateFormat="Date (ISO 8601)" formattedDate={formatISO(ISODate)} />
