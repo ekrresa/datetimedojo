@@ -1,4 +1,3 @@
-import { parseDateString } from '@/helpers'
 import * as React from 'react'
 import {
   DateField,
@@ -12,6 +11,7 @@ import {
   TextField,
   Text,
 } from 'react-aria-components'
+import { parseDateString } from '@/helpers'
 
 interface Props {
   onDateTimeChange: (date: Date | null) => void
@@ -43,13 +43,14 @@ export default function DateInputTabs(props: Props) {
           onChange={dateValue => {
             onDateTimeChange(dateValue ? new Date(dateValue.toString()) : null)
           }}
+          hourCycle={24}
           autoFocus
         >
           <DateInput className="flex flex-1 rounded-md border bg-white p-1.5">
             {segment => (
               <DateSegment
                 className={({ isPlaceholder, isFocused }) =>
-                  `relative tabular-nums type-literal:px-2 focus:outline-none ${
+                  `relative tabular-nums type-literal:px-1 focus:outline-none ${
                     isPlaceholder ? 'italic text-desert-400' : 'text-desert-800'
                   } ${isFocused ? 'rounded-sm bg-[#2C497F] text-white caret-transparent' : ''}`
                 }
@@ -58,7 +59,7 @@ export default function DateInputTabs(props: Props) {
             )}
           </DateInput>
           <Text className="mt-1 text-xs text-gray-600" slot="description">
-            Input a date and time by filling all segments.
+            Input a date and time by filling all segments. Date is in 24h format.
           </Text>
         </DateField>
       </TabPanel>
@@ -73,7 +74,6 @@ export default function DateInputTabs(props: Props) {
             } else {
               onDateTimeChange(null)
             }
-            console.log(val)
           }}
         >
           <Input
