@@ -4,6 +4,37 @@
 
 @layer {
   body {
-    @apply font-sans bg-desert-50 text-gray-800;
+    @apply bg-desert-50 font-sans text-gray-800;
   }
+}
+
+/* Hour input */
+[data-type='hour'][data-placeholder='true'] {
+  @apply text-white after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['hh'];
+}
+/* Hide the hour placeholder text on focus */
+[data-type='hour'][data-focused='true'][data-placeholder='true']::after {
+  @apply hidden;
+}
+
+/* Minute input */
+[data-type='minute'][data-placeholder='true'] {
+  @apply w-7 text-white after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['mm'];
+}
+/* Hide the minute placeholder text on focus */
+[data-type='minute'][data-focused='true'][data-placeholder='true']::after {
+  @apply hidden;
+}
+/* Reset the input width on focus */
+[data-type='minute'][data-focused='true'] {
+  @apply w-auto;
+}
+
+/* Second input */
+[data-type='second'][data-placeholder='true'] {
+  @apply text-white after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['ss'];
+}
+/* Hide the second placeholder text on focus */
+[data-type='second'][data-focused='true'][data-placeholder='true']::after {
+  @apply hidden;
 }
