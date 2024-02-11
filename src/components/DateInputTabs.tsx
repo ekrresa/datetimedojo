@@ -26,19 +26,19 @@ export default function DateInputTabs(props: Props) {
     <Tabs className="flex orientation-horizontal:flex-col">
       <TabList className="flex" aria-label="Date inputs">
         <Tab
-          id="pick"
+          id="select-date"
           className="relative flex-1 cursor-pointer border-b-[1.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
         >
           Enter a date
         </Tab>
         <Tab
-          id="paste"
+          id="convert-date"
           className="relative flex-1 cursor-pointer border-b-[1.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
         >
           Convert a date
         </Tab>
       </TabList>
-      <TabPanel id="pick" className="mt-2 flex items-start gap-1 outline-none">
+      <TabPanel id="select-date" className="mt-2 flex items-start gap-1 outline-none">
         <DateField
           granularity="second"
           aria-label="Date Input"
@@ -67,7 +67,7 @@ export default function DateInputTabs(props: Props) {
         </DateField>
       </TabPanel>
 
-      <TabPanel id="paste" className="mt-2 flex gap-1 outline-none">
+      <TabPanel id="convert-date" className="mt-2 flex gap-1 outline-none">
         <TextField
           aria-label="Enter your date string"
           className="flex flex-1 flex-col"
