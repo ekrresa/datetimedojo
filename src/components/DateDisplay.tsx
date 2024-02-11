@@ -16,10 +16,10 @@ export function DateDisplay(props: Props) {
       </p>
 
       <div className="flex flex-1 items-center justify-between gap-4 sm:min-w-0">
-        <span className="min-w-0 truncate font-mono tabular-nums text-gray-600">
-          {formattedDate}
-        </span>
+        <p className="min-w-0 truncate font-mono tabular-nums text-gray-600">{formattedDate}</p>
+
         <Button
+          aria-label="Copy date"
           className="rounded-md p-2 hover:bg-gray-50"
           onPress={() => {
             navigator.clipboard.writeText(formattedDate.toString())
