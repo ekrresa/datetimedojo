@@ -16,12 +16,25 @@ import { useIsMounted } from '@/hooks/useIsMounted'
 import DateInputTabs from '@/components/DateInputTabs'
 
 export default function Home() {
-  const { currentTime } = useCurrentTime()
+  const { currentTime, controls } = useCurrentTime()
   const isMounted = useIsMounted()
 
   const [selectedDateTime, setSelectedDateTime] = React.useState<Date | null>(null)
 
   const ISODate = parseISO(selectedDateTime?.toISOString() ?? currentTime.toISOString())
+
+  const handleDateChange = React.useCallback(
+    (date: Date | null) => {
+      setSelectedDateTime(date)
+
+      if (date) {
+        controls.pause()
+      } else {
+        controls.resume()
+      }
+    },
+    [controls],
+  )
 
   return (
     <section className="flex min-h-svh flex-col pt-24">
@@ -33,7 +46,7 @@ export default function Home() {
 
         <div className="mb-40 mt-10 w-full max-w-[38rem] overflow-hidden rounded-xl border border-desert-200 bg-white sm:shadow-[rgba(0,0,0,0.04)_0px_8px_8px]">
           <div className="bg-desert-50 p-4">
-            <DateInputTabs onDateTimeChange={setSelectedDateTime} />
+            <DateInputTabs onDateTimeChange={handleDateChange} />
           </div>
 
           <React.Suspense key={isMounted ? 'client' : 'server'}>
