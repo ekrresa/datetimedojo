@@ -77,8 +77,13 @@ export default function Home() {
         <div className="mx-auto flex max-w-[50rem] flex-col items-center justify-center gap-2 text-sm text-gray-500 sm:flex-row">
           <p className="uppercase"> &#169; {new Date().getFullYear()}</p>
           <p className="hidden uppercase sm:block">
-            <a href="https://ekrresa.com" target="_blank" rel="noreferrer noopener">
-              Built by Ochuko Ekrresa
+            <a
+              href="https://ekrresa.com"
+              className="transition-all hover:text-gray-700"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Developed by Ochuko Ekrresa
             </a>
           </p>
         </div>
