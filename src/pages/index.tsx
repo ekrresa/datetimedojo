@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <section className="flex min-h-svh flex-col pt-24">
       <main className="flex flex-col items-center px-5">
-        <h1 className="text-center text-4xl font-bold text-gray-800">Date-Time Dojo</h1>
+        <h1 className="text-center text-4xl font-bold text-gray-800">DateTime Dojo</h1>
         <p className="mt-4 w-full max-w-[50rem] text-center text-lg text-gray-600">
           Transform dates with ease. Enter a date and choose from a variety of formats below.
         </p>
