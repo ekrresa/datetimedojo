@@ -1,3 +1,5 @@
+import { isValid } from 'date-fns'
+
 export function convertDateToExcelFormat(date: Date) {
   return (date.getTime() / (1000 * 60 * 60 * 24) + 25569).toFixed(12)
 }
@@ -57,6 +59,13 @@ export function parseDateString(date: string) {
     console.log('excel')
     return getDateFromExcel(date)
   }
+
+  if (isValid(new Date(date))) {
+    console.log('date')
+    return new Date(date)
+  }
+
+  console.log('no match')
 
   return null
 }

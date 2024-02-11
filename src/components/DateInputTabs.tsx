@@ -10,6 +10,7 @@ import {
   Tabs,
   TextField,
   Text,
+  FieldError,
 } from 'react-aria-components'
 import { parseDateString } from '@/helpers'
 
@@ -18,6 +19,8 @@ interface Props {
 }
 export default function DateInputTabs(props: Props) {
   const { onDateTimeChange } = props
+
+  const [inputDateError, setInputDateError] = React.useState(false)
 
   return (
     <Tabs className="flex orientation-horizontal:flex-col">
@@ -32,7 +35,7 @@ export default function DateInputTabs(props: Props) {
           id="paste"
           className="relative flex-1 cursor-pointer border-b-[1.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
         >
-          Paste a date string
+          Convert a date
         </Tab>
       </TabList>
       <TabPanel id="pick" className="mt-2 flex items-start gap-1 outline-none">
@@ -58,7 +61,7 @@ export default function DateInputTabs(props: Props) {
               />
             )}
           </DateInput>
-          <Text className="mt-1 text-xs text-gray-600" slot="description">
+          <Text className="mt-1 pl-1 text-xs text-gray-600" slot="description">
             Input a date and time by filling all segments. Date is in 24h format.
           </Text>
         </DateField>
@@ -69,20 +72,38 @@ export default function DateInputTabs(props: Props) {
           aria-label="Enter your date string"
           className="flex flex-1 flex-col"
           onChange={val => {
+            setInputDateError(false)
+
             if (val.length > 0) {
-              onDateTimeChange(parseDateString(val))
+              const formattedValue = parseDateString(val)
+              if (formattedValue === null) {
+                setInputDateError(true)
+              } else {
+                onDateTimeChange(formattedValue)
+              }
             } else {
               onDateTimeChange(null)
             }
           }}
+          isInvalid={inputDateError}
+          validationBehavior="aria"
         >
           <Input
-            className="w-full min-w-0 rounded-md border bg-white p-1.5 text-desert-900 outline-none placeholder:text-desert-500"
+            className={({ isInvalid }) =>
+              `w-full min-w-0 rounded-md border bg-white p-1.5 text-desert-900 outline-none placeholder:text-sm placeholder:text-desert-500 ${
+                isInvalid ? 'border-red-300' : ''
+              }`
+            }
             placeholder="Input your date string"
           />
-          <Text className="mt-1 text-xs text-gray-600" slot="description">
-            Paste a date string in various formats.
-          </Text>
+
+          {inputDateError ? (
+            <FieldError className="mt-1 pl-1 text-xs text-red-500">Invalid date string</FieldError>
+          ) : (
+            <Text className="mt-1 pl-1 text-xs text-gray-600" slot="description">
+              Convert a date string into all formats below.
+            </Text>
+          )}
         </TextField>
       </TabPanel>
     </Tabs>
