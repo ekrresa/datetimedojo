@@ -27,13 +27,13 @@ export default function DateInputTabs(props: Props) {
       <TabList className="flex" aria-label="Date inputs">
         <Tab
           id="select-date"
-          className="relative flex-1 cursor-pointer border-b-[1.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
+          className="relative flex-1 cursor-pointer border-b-[2.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
         >
           Enter a date
         </Tab>
         <Tab
           id="convert-date"
-          className="relative flex-1 cursor-pointer border-b-[1.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
+          className="relative flex-1 cursor-pointer border-b-[2.5px] border-zinc-200 px-1 py-2 text-zinc-400 outline-none transition-colors duration-300 selected:border-desert-600 selected:text-desert-900"
         >
           Convert a date
         </Tab>
@@ -61,7 +61,7 @@ export default function DateInputTabs(props: Props) {
               />
             )}
           </DateInput>
-          <Text className="mt-1 pl-1 text-xs text-gray-600" slot="description">
+          <Text className="mt-1 pl-1 text-xs italic text-gray-600" slot="description">
             Input a date and time by filling all segments. Date is in 24h format.
           </Text>
         </DateField>
@@ -100,7 +100,7 @@ export default function DateInputTabs(props: Props) {
           {inputDateError ? (
             <FieldError className="mt-1 pl-1 text-xs text-red-500">Invalid date string</FieldError>
           ) : (
-            <Text className="mt-1 pl-1 text-xs text-gray-600" slot="description">
+            <Text className="mt-1 pl-1 text-xs italic text-gray-600" slot="description">
               Convert a date string into all formats below.
             </Text>
           )}
