@@ -15,12 +15,13 @@ import { convertDateToExcelFormat } from '@/helpers'
 import { DateDisplay } from '@/components/DateDisplay'
 import { useIsMounted } from '@/hooks/useIsMounted'
 import DateInputTabs from '@/components/DateInputTabs'
+import useCounter from '@/hooks/useCounter'
 
 export default function Home() {
-  const { currentTime, controls } = useCurrentTime()
   const isMounted = useIsMounted()
+  const { currentTime, controls } = useCurrentTime()
 
-  const [counter] = useCountdown(1.2, 0, { startOnMount: true })
+  const { counter, startCountdown } = useCounter()
 
   const [selectedDateTime, setSelectedDateTime] = React.useState<Date | null>(null)
 
@@ -29,6 +30,7 @@ export default function Home() {
   const handleDateChange = React.useCallback(
     (date: Date | null) => {
       setSelectedDateTime(date)
+      startCountdown()
 
       if (date) {
         controls.pause()
@@ -36,7 +38,7 @@ export default function Home() {
         controls.resume()
       }
     },
-    [controls],
+    [controls, startCountdown],
   )
 
   return (
