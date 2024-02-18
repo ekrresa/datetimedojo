@@ -13,6 +13,7 @@ import {
   FieldError,
 } from 'react-aria-components'
 import { parseDateString } from '@/helpers'
+import { isValid } from 'date-fns'
 
 interface Props {
   onDateTimeChange: (date: Date | null) => void
@@ -76,10 +77,12 @@ export default function DateInputTabs(props: Props) {
 
             if (val.length > 0) {
               const formattedValue = parseDateString(val)
-              if (formattedValue === null) {
-                setInputDateError(true)
-              } else {
+              const isValidDate = isValid(formattedValue)
+
+              if (isValidDate) {
                 onDateTimeChange(formattedValue)
+              } else {
+                setInputDateError(true)
               }
             } else {
               onDateTimeChange(null)
