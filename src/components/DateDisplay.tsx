@@ -3,11 +3,21 @@ import { Button } from 'react-aria-components'
 import { toast } from 'sonner'
 
 interface Props {
+  loading: boolean
   dateFormat: string
   formattedDate: string | number
 }
 export function DateDisplay(props: Props) {
-  const { dateFormat, formattedDate } = props
+  const { dateFormat, formattedDate, loading } = props
+
+  if (loading) {
+    return (
+      <div className="flex h-8 gap-4">
+        <div className="hidden h-full grow-0 animate-pulse rounded bg-desert-200 sm:block sm:basis-[125px]"></div>
+        <div className="h-full flex-1 animate-pulse rounded bg-desert-200"></div>
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col justify-between sm:flex-row sm:items-center sm:gap-4">

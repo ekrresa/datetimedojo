@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useCountdown } from 'react-timing-hooks'
 import {
   formatISO,
   formatISO9075,
@@ -18,6 +19,8 @@ import DateInputTabs from '@/components/DateInputTabs'
 export default function Home() {
   const { currentTime, controls } = useCurrentTime()
   const isMounted = useIsMounted()
+
+  const [counter] = useCountdown(1.2, 0, { startOnMount: true })
 
   const [selectedDateTime, setSelectedDateTime] = React.useState<Date | null>(null)
 
@@ -50,22 +53,63 @@ export default function Home() {
           </div>
 
           <React.Suspense key={isMounted ? 'client' : 'server'}>
-            <div className="mt-6 border-gray-100 p-4 transition-all ease-out">
-              <div className="flex flex-col gap-4 text-sm">
-                <DateDisplay dateFormat="Date String" formattedDate={ISODate.toLocaleString()} />
-                <DateDisplay dateFormat="Locale Date String" formattedDate={ISODate.toString()} />
-                <DateDisplay dateFormat="Timestamp" formattedDate={getTime(ISODate)} />
-                <DateDisplay dateFormat="Unix Timestamp" formattedDate={getUnixTime(ISODate)} />
-                <DateDisplay dateFormat="Date (UTC)" formattedDate={ISODate.toUTCString()} />
+            <div className=" border-gray-100 px-4 py-5 transition-all ease-out">
+              <h2 className="mb-4 text-center text-2xl font-semibold">
+                {selectedDateTime ? 'Selected date' : 'Current time'}
+              </h2>
 
-                <DateDisplay dateFormat="Date (ISO 8601)" formattedDate={formatISO(ISODate)} />
-                <DateDisplay dateFormat="Date (ISO 9075)" formattedDate={formatISO9075(ISODate)} />
-                <DateDisplay dateFormat="Date (RFC 3339)" formattedDate={formatRFC3339(ISODate)} />
-                <DateDisplay dateFormat="Date (RFC 7231)" formattedDate={formatRFC7231(ISODate)} />
+              <div className="flex flex-col gap-4 text-sm">
+                <DateDisplay
+                  dateFormat="Date String"
+                  formattedDate={ISODate.toLocaleString()}
+                  loading={counter > 0}
+                />
+                <DateDisplay
+                  dateFormat="Locale Date String"
+                  formattedDate={ISODate.toString()}
+                  loading={counter > 0}
+                />
+                <DateDisplay
+                  dateFormat="Timestamp"
+                  formattedDate={getTime(ISODate)}
+                  loading={counter > 0}
+                />
+                <DateDisplay
+                  dateFormat="Unix Timestamp"
+                  formattedDate={getUnixTime(ISODate)}
+                  loading={counter > 0}
+                />
+                <DateDisplay
+                  dateFormat="Date (UTC)"
+                  formattedDate={ISODate.toUTCString()}
+                  loading={counter > 0}
+                />
+
+                <DateDisplay
+                  dateFormat="Date (ISO 8601)"
+                  formattedDate={formatISO(ISODate)}
+                  loading={counter > 0}
+                />
+                <DateDisplay
+                  dateFormat="Date (ISO 9075)"
+                  formattedDate={formatISO9075(ISODate)}
+                  loading={counter > 0}
+                />
+                <DateDisplay
+                  dateFormat="Date (RFC 3339)"
+                  formattedDate={formatRFC3339(ISODate)}
+                  loading={counter > 0}
+                />
+                <DateDisplay
+                  dateFormat="Date (RFC 7231)"
+                  formattedDate={formatRFC7231(ISODate)}
+                  loading={counter > 0}
+                />
 
                 <DateDisplay
                   dateFormat="Excel Format"
                   formattedDate={convertDateToExcelFormat(ISODate)}
+                  loading={counter > 0}
                 />
               </div>
             </div>
