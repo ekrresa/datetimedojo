@@ -21,16 +21,16 @@ export function DateDisplay(props: Props) {
 
   return (
     <div className="flex flex-col justify-between sm:flex-row sm:items-center sm:gap-4">
-      <p className="shrink-0 grow-0 font-semibold text-gray-700 sm:basis-[125px] sm:text-right">
+      <p className="shrink-0 grow-0 font-semibold text-opium-800 sm:basis-[125px] sm:text-right">
         {dateFormat}
       </p>
 
       <div className="flex flex-1 items-center justify-between gap-4 sm:min-w-0">
-        <p className="min-w-0 truncate font-mono tabular-nums text-gray-600">{formattedDate}</p>
+        <p className="min-w-0 truncate font-mono tabular-nums text-desert-700">{formattedDate}</p>
 
         <Button
           aria-label="Copy date"
-          className="rounded-md p-2 hover:bg-gray-50"
+          className="rounded-md p-2 hover:bg-desert-50"
           onPress={() => {
             navigator.clipboard.writeText(formattedDate.toString())
             toast('Copied to clipboard')

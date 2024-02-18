@@ -42,10 +42,10 @@ export default function Home() {
   )
 
   return (
-    <section className="flex min-h-svh flex-col pt-24">
+    <section className="flex min-h-svh flex-col pt-16">
       <main className="flex flex-col items-center px-5">
-        <h1 className="text-center text-4xl font-bold text-gray-800">DateTime Dojo</h1>
-        <p className="mt-4 w-full max-w-[50rem] text-center text-lg text-gray-600">
+        <h1 className="text-center text-4xl font-bold text-opium-900">DateTime Dojo</h1>
+        <p className="mt-4 w-full max-w-[50rem] text-center text-lg text-desert-700">
           Transform dates with ease. Enter a date and choose from a variety of formats below.
         </p>
 
@@ -56,7 +56,7 @@ export default function Home() {
 
           <React.Suspense key={isMounted ? 'client' : 'server'}>
             <div className=" border-gray-100 px-4 py-5 transition-all ease-out">
-              <h2 className="mb-4 text-center text-2xl font-semibold">
+              <h2 className="mb-4 text-center text-2xl font-semibold text-opium-900">
                 {selectedDateTime ? 'Selected date' : 'Current time'}
               </h2>
 
@@ -120,12 +120,12 @@ export default function Home() {
       </main>
 
       <footer className="mt-auto w-full border-t bg-desert-100 px-5 py-4">
-        <div className="mx-auto flex max-w-[50rem] flex-col items-center justify-center gap-2 text-sm text-gray-500 sm:flex-row">
+        <div className="mx-auto flex max-w-[50rem] flex-col items-center justify-center gap-2 text-sm text-opium-700 sm:flex-row">
           <p className="uppercase"> &#169; {new Date().getFullYear()}</p>
           <p className="hidden uppercase sm:block">
             <a
               href="https://ekrresa.com"
-              className="transition-all hover:text-gray-700"
+              className="transition-all hover:text-opium-900"
               target="_blank"
               rel="noreferrer noopener"
             >
