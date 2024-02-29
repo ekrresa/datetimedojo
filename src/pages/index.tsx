@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <section className="flex min-h-svh flex-col pt-16">
       <main className="flex flex-col items-center px-5">
-        <h1 className="text-center text-4xl font-bold text-opium-900">DateTime Dojo</h1>
+        <h1 className="text-center text-4xl font-bold text-opium-950">DateTime Dojo</h1>
         <p className="mt-4 w-full max-w-[50rem] text-center text-lg text-desert-700">
           Transform dates with ease. Enter a date and choose from a variety of formats below.
         </p>
@@ -56,11 +56,11 @@ export default function Home() {
 
           <React.Suspense key={isMounted ? 'client' : 'server'}>
             <div className=" border-gray-100 px-4 py-5 transition-all ease-out">
-              <h2 className="mb-4 text-center text-2xl font-semibold text-opium-900">
+              <h2 className="mb-4 text-center text-2xl font-semibold text-opium-950">
                 {selectedDateTime ? 'Selected date' : 'Current time'}
               </h2>
 
-              <div className="flex flex-col gap-4 text-sm">
+              <div className="flex flex-col gap-4">
                 <DateDisplay
                   dateFormat="Date String"
                   formattedDate={ISODate.toLocaleString()}

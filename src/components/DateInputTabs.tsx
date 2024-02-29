@@ -28,13 +28,13 @@ export default function DateInputTabs(props: Props) {
       <TabList className="flex" aria-label="Date inputs">
         <Tab
           id="select-date"
-          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-600 selected:text-desert-900"
+          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900"
         >
           Enter a date
         </Tab>
         <Tab
           id="convert-date"
-          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-600 selected:text-desert-900"
+          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900"
         >
           Convert a date
         </Tab>
@@ -50,13 +50,19 @@ export default function DateInputTabs(props: Props) {
           hourCycle={24}
           autoFocus
         >
-          <DateInput className={() => `flex flex-1 rounded-md border bg-white p-1.5`}>
+          <DateInput
+            className={({ isFocusWithin }) =>
+              `flex flex-1 rounded-md border bg-white p-1.5 ${
+                isFocusWithin ? 'outline outline-1 outline-offset-1 outline-opium-800' : ''
+              }`
+            }
+          >
             {segment => (
               <DateSegment
                 className={({ isPlaceholder, isFocused }) =>
                   `relative tabular-nums type-literal:px-1 focus:outline-none ${
                     isPlaceholder ? 'italic text-desert-400' : 'text-desert-800'
-                  } ${isFocused ? 'rounded-sm bg-opium-600 text-white caret-transparent' : ''}`
+                  } ${isFocused ? 'rounded-sm bg-opium-800 text-white caret-transparent' : ''}`
                 }
                 segment={segment}
               />
@@ -95,7 +101,7 @@ export default function DateInputTabs(props: Props) {
             className={({ isInvalid, isFocused }) =>
               `w-full min-w-0 rounded-md border bg-white p-1.5 text-desert-900 outline-none transition-colors placeholder:text-sm placeholder:text-desert-500 ${
                 isInvalid ? 'outline-1 outline-offset-1 outline-crimson' : ''
-              } ${isFocused ? 'outline-1 outline-offset-1 outline-opium-600' : ''}`
+              } ${isFocused ? 'outline-1 outline-offset-1 outline-opium-800' : ''}`
             }
             placeholder="Input your date string"
           />

@@ -21,12 +21,14 @@ export function DateDisplay(props: Props) {
 
   return (
     <div className="flex flex-col justify-between sm:flex-row sm:items-center sm:gap-4">
-      <p className="shrink-0 grow-0 font-semibold text-opium-800 sm:basis-[125px] sm:text-right">
+      <p className="shrink-0 grow-0 text-sm font-semibold text-opium-900 sm:basis-[125px] sm:text-right">
         {dateFormat}
       </p>
 
       <div className="flex flex-1 items-center justify-between gap-4 sm:min-w-0">
-        <p className="min-w-0 truncate font-mono tabular-nums text-desert-700">{formattedDate}</p>
+        <p className="min-w-0 truncate font-mono text-sm tabular-nums text-desert-700">
+          {formattedDate}
+        </p>
 
         <Button
           aria-label="Copy date"
