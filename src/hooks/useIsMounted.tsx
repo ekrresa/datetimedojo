@@ -1,11 +1,13 @@
 import * as React from 'react'
 
-export function useIsMounted() {
-  const [isMounted, setIsMounted] = React.useState(false)
+const emptySubscribe = () => () => {}
 
-  React.useEffect(() => {
-    setIsMounted(true)
-  }, [])
+export function useIsMounted() {
+  const isMounted = React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  )
 
   return isMounted
 }
