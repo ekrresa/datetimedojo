@@ -28,13 +28,13 @@ export default function DateInputTabs(props: Props) {
       <TabList className="flex" aria-label="Date inputs">
         <Tab
           id="select-date"
-          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900"
+          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900 dark:border-desert-600 dark:text-desert-600 dark:selected:border-opium-100 dark:selected:text-desert-100"
         >
           Enter a date
         </Tab>
         <Tab
           id="convert-date"
-          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900"
+          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900 dark:border-desert-500 dark:text-desert-500 dark:selected:border-opium-100 dark:selected:text-desert-100"
         >
           Convert a date
         </Tab>
@@ -53,7 +53,9 @@ export default function DateInputTabs(props: Props) {
           <DateInput
             className={({ isFocusWithin }) =>
               `flex flex-1 rounded-md border bg-white p-1.5 ${
-                isFocusWithin ? 'outline outline-1 outline-offset-1 outline-opium-800' : ''
+                isFocusWithin
+                  ? 'outline outline-1 outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
+                  : ''
               }`
             }
           >
@@ -68,7 +70,10 @@ export default function DateInputTabs(props: Props) {
               />
             )}
           </DateInput>
-          <Text className="mt-1 pl-1 text-xs italic text-desert-600" slot="description">
+          <Text
+            className="mt-1 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
+            slot="description"
+          >
             Input a date and time by filling all segments. Date is in 24h format.
           </Text>
         </DateField>
@@ -100,16 +105,27 @@ export default function DateInputTabs(props: Props) {
           <Input
             className={({ isInvalid, isFocused }) =>
               `w-full min-w-0 rounded-md border bg-white p-1.5 text-desert-900 outline-none transition-colors placeholder:text-sm placeholder:text-desert-500 ${
-                isInvalid ? 'outline-1 outline-offset-1 outline-crimson' : ''
-              } ${isFocused ? 'outline-1 outline-offset-1 outline-opium-800' : ''}`
+                isInvalid
+                  ? 'outline-crimson-600 dark:outline-crimson-400 outline-1 outline-offset-1 dark:outline-offset-2'
+                  : ''
+              } ${
+                isFocused
+                  ? 'outline-1 outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
+                  : ''
+              }`
             }
             placeholder="Input your date string"
           />
 
           {inputDateError ? (
-            <FieldError className="mt-1 pl-1 text-xs text-crimson">Invalid date string</FieldError>
+            <FieldError className="text-crimson-600 dark:text-crimson-400 mt-1 pl-1 text-xs">
+              Invalid date string
+            </FieldError>
           ) : (
-            <Text className="mt-1 pl-1 text-xs italic text-desert-600" slot="description">
+            <Text
+              className="mt-1 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
+              slot="description"
+            >
               Convert a date string into all formats below.
             </Text>
           )}

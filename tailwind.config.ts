@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 import { fontFamily } from 'tailwindcss/defaultTheme'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,7 +11,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        crimson: '#D52941',
+        crimson: {
+          '50': '#fef2f2',
+          '100': '#fde7e6',
+          '200': '#fbd0d2',
+          '300': '#f8a9ad',
+          '400': '#f37981',
+          '500': '#e94a58',
+          '600': '#d52941',
+          '700': '#b31d35',
+          '800': '#961b33',
+          '900': '#811a32',
+          '950': '#480916',
+        },
+        pearl: '#12202a',
+        charcoal: '#0c1821',
         desert: {
           '50': '#f7f7f6',
           '100': '#f0f0ee',
