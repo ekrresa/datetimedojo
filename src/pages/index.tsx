@@ -67,7 +67,7 @@ export default function Home() {
           Transform dates with ease. Enter a date and choose from a variety of formats below.
         </p>
 
-        <div className="dark:bg-pearl mb-40 mt-10 w-full max-w-[38rem] overflow-hidden rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-100 sm:shadow-lg dark:border-desert-900 dark:shadow-desert-900/10">
+        <div className="dark:bg-pearl mb-40 mt-10 w-full max-w-[38rem] overflow-hidden rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-100 sm:shadow-lg dark:border-desert-900 dark:shadow-desert-900/5">
           <div className="dark:bg-pearl bg-desert-50 p-4">
             <DateInputTabs onDateTimeChange={handleDateChange} />
           </div>
