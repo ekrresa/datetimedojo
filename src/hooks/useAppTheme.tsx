@@ -67,8 +67,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     [],
   )
 
-  console.log(theme)
-
   return (
     <ThemeContext.Provider
       value={{
