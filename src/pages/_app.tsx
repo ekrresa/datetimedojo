@@ -1,22 +1,19 @@
-import { ThemeProvider } from '@/hooks/useAppTheme'
-import '@/styles/globals.css'
+import type { AppProps } from 'next/app'
 import { GeistSans } from 'geist/font/sans'
 import { NextSeo } from 'next-seo'
-import type { AppProps } from 'next/app'
 import { Toaster } from 'sonner'
+
+import { ThemeProvider } from '@/hooks/useAppTheme'
+import { SEO } from '@/helpers/seo'
+import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <main
-        className={`${GeistSans.variable} dark:bg-charcoal bg-desert-50 font-sans text-desert-900`}
+        className={`${GeistSans.variable} bg-desert-50 font-sans text-desert-900 dark:bg-charcoal`}
       >
-        <NextSeo
-          title="Date-Time Dojo"
-          description="A solution for converting dates into different formats."
-          noindex
-          nofollow
-        />
+        <NextSeo {...SEO} />
         <Toaster duration={4000} position="top-right" />
         <Component {...pageProps} />
       </main>
