@@ -3,6 +3,7 @@ import { NextSeoProps } from 'next-seo'
 export const SEO: NextSeoProps = {
   title: 'DateTime Dojo',
   description: 'Convert dates into different formats',
+  canonical: 'https://datetimedojo.com',
   openGraph: {
     type: 'website',
     locale: 'en_GB',
