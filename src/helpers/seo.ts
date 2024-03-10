@@ -10,6 +10,14 @@ export const SEO: NextSeoProps = {
     site_name: 'DateTime Dojo',
     description: 'Convert dates into different formats',
     url: 'https://datetimedojo.com',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/chuck-huey/image/upload/c_scale,dpr_auto,w_auto,q_auto,f_auto/v1710096874/personal/datetimedojo-og_rp2w3h.png',
+        width: 1200,
+        height: 600,
+        alt: 'DateTime Dojo',
+      },
+    ],
   },
   additionalMetaTags: [
     {
