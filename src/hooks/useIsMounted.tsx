@@ -1,13 +1,15 @@
-import * as React from 'react'
+"use client";
 
-const emptySubscribe = () => () => {}
+import * as React from "react";
+
+const emptySubscribe = () => () => {};
 
 export function useIsMounted() {
   const isMounted = React.useSyncExternalStore(
     emptySubscribe,
     () => true,
-    () => false,
-  )
+    () => false
+  );
 
-  return isMounted
+  return isMounted;
 }

@@ -1,6 +1,3 @@
-import * as React from 'react'
-import { MoonIcon, SunDimIcon } from 'lucide-react'
-import { Button } from 'react-aria-components'
 import {
   formatISO,
   formatISO9075,
@@ -9,40 +6,46 @@ import {
   getTime,
   getUnixTime,
   parseISO,
-} from 'date-fns'
-
-import { useCurrentTime } from '@/hooks/useCurrentTime'
-import { convertDateToExcelFormat } from '@/helpers'
-import { DateDisplay } from '@/components/DateDisplay'
-import { useIsMounted } from '@/hooks/useIsMounted'
-import DateInputTabs from '@/components/DateInputTabs'
-import useCounter from '@/hooks/useCounter'
-import { useAppTheme } from '@/hooks/useAppTheme'
+} from "date-fns";
+import { MoonIcon, SunDimIcon } from "lucide-react";
+import * as React from "react";
+import { Button } from "react-aria-components";
+import { DateDisplay } from "@/components/DateDisplay";
+import DateInputTabs from "@/components/DateInputTabs";
+import { convertDateToExcelFormat } from "@/helpers";
+import { useAppTheme } from "@/hooks/useAppTheme";
+import useCounter from "@/hooks/useCounter";
+import { useCurrentTime } from "@/hooks/useCurrentTime";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 export default function Home() {
-  const isMounted = useIsMounted()
-  const { currentTime, controls } = useCurrentTime()
-  const { theme, toggleTheme } = useAppTheme()
+  const isMounted = useIsMounted();
+  const { currentTime, controls } = useCurrentTime();
+  const { theme, toggleTheme } = useAppTheme();
 
-  const { counter, startCountdown } = useCounter()
+  const { counter, startCountdown } = useCounter();
 
-  const [selectedDateTime, setSelectedDateTime] = React.useState<Date | null>(null)
+  const [selectedDateTime, setSelectedDateTime] = React.useState<Date | null>(
+    null
+  );
 
-  const ISODate = parseISO(selectedDateTime?.toISOString() ?? currentTime.toISOString())
+  const ISODate = parseISO(
+    selectedDateTime?.toISOString() ?? currentTime.toISOString()
+  );
 
   const handleDateChange = React.useCallback(
     (date: Date | null) => {
-      setSelectedDateTime(date)
-      startCountdown()
+      setSelectedDateTime(date);
+      startCountdown();
 
       if (date) {
-        controls.pause()
+        controls.pause();
       } else {
-        controls.resume()
+        controls.resume();
       }
     },
-    [controls, startCountdown],
-  )
+    [controls, startCountdown]
+  );
 
   return (
     <section className="flex min-h-svh flex-col">
@@ -52,7 +55,7 @@ export default function Home() {
           aria-label="Dark mode toggle"
           onPress={toggleTheme}
         >
-          {theme === 'dark' ? (
+          {theme === "dark" ? (
             <SunDimIcon size={28} strokeWidth={1.5} />
           ) : (
             <MoonIcon size={28} strokeWidth={1.5} />
@@ -64,7 +67,8 @@ export default function Home() {
           DateTime Dojo
         </h1>
         <p className="mt-4 w-full max-w-[50rem] text-center text-lg text-desert-700 dark:text-desert-200">
-          Transform dates with ease. Enter a date and choose from a variety of formats below.
+          Transform dates with ease. Enter a date and choose from a variety of
+          formats below.
         </p>
 
         <div className="dark:bg-pearl mb-40 mt-10 w-full max-w-[38rem] overflow-hidden rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-100 sm:shadow-lg dark:border-desert-900 dark:shadow-desert-900/5">
@@ -72,10 +76,10 @@ export default function Home() {
             <DateInputTabs onDateTimeChange={handleDateChange} />
           </div>
 
-          <React.Suspense key={isMounted ? 'client' : 'server'}>
+          <React.Suspense key={isMounted ? "client" : "server"}>
             <div className="px-4 py-5">
               <h2 className="mb-4 text-center text-2xl font-semibold text-opium-950 dark:text-opium-50">
-                {selectedDateTime ? 'Selected date' : 'Current time'}
+                {selectedDateTime ? "Selected date" : "Current time"}
               </h2>
 
               <div className="flex flex-col gap-4">
@@ -154,5 +158,5 @@ export default function Home() {
         </div>
       </footer>
     </section>
-  )
+  );
 }

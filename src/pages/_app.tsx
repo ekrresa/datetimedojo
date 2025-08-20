@@ -1,11 +1,10 @@
-import type { AppProps } from 'next/app'
-import { GeistSans } from 'geist/font/sans'
-import { NextSeo } from 'next-seo'
-import { Toaster } from 'sonner'
-
-import { ThemeProvider } from '@/hooks/useAppTheme'
-import { SEO } from '@/helpers/seo'
-import '@/styles/globals.css'
+import { GeistSans } from "geist/font/sans";
+import type { AppProps } from "next/app";
+import { NextSeo } from "next-seo";
+import { Toaster } from "sonner";
+import { SEO } from "@/helpers/seo";
+import { ThemeProvider } from "@/hooks/useAppTheme";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,5 +17,5 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </main>
     </ThemeProvider>
-  )
+  );
 }

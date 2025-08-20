@@ -1,5 +1,5 @@
-import { Html, Head, Main, NextScript } from 'next/document'
-import Script from 'next/script'
+import { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -9,11 +9,11 @@ export default function Document() {
         <Script
           src="noflash.js"
           strategy="beforeInteractive"
-          onReady={() => console.log('loaded')}
+          onReady={() => console.log("loaded")}
         ></Script>
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }
