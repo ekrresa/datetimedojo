@@ -66,11 +66,11 @@ export default function Page() {
         <h1 className="text-center text-4xl font-bold text-opium-950 dark:text-opium-50">
           DateTime Dojo
         </h1>
-        <p className="mt-4 w-full max-w-[50rem] text-center text-lg text-desert-700 dark:text-desert-200">
+        <p className="mt-4 w-full max-w-200 text-center text-lg text-desert-700 dark:text-desert-200">
           Transform dates with ease. Enter a date and choose from a variety of formats below.
         </p>
 
-        <div className="dark:bg-pearl mb-40 mt-10 w-full max-w-[38rem] overflow-hidden rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-100 sm:shadow-lg dark:border-desert-900 dark:shadow-desert-900/5">
+        <div className="dark:bg-pearl mb-40 mt-10 w-full max-w-152 overflow-hidden rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-100 sm:shadow-lg dark:border-desert-900 dark:shadow-desert-900/5">
           <div className="dark:bg-pearl bg-desert-50 p-4">
             <DateInputTabs onDateTimeChange={handleDateChange} />
           </div>
@@ -141,7 +141,7 @@ export default function Page() {
       </main>
 
       <footer className="dark:bg-charcoal mt-auto w-full bg-desert-100 px-5 py-4">
-        <div className="mx-auto flex max-w-[50rem] items-center justify-center gap-2 text-sm text-desert-600">
+        <div className="mx-auto flex max-w-200 items-center justify-center gap-2 text-sm text-desert-600">
           <p className="uppercase"> &#169; {new Date().getFullYear()}</p>
           <p className="flex items-center gap-1 uppercase">
             <a

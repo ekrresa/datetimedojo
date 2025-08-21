@@ -58,7 +58,7 @@ export default function DateInputTabs(props: Props) {
             className={({ isFocusWithin }) =>
               `flex flex-1 rounded-md border bg-white p-1.5 ${
                 isFocusWithin
-                  ? 'outline outline-1 outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
+                  ? 'outline outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
                   : ''
               }`
             }

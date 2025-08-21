@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @plugin "tailwindcss-react-aria-components";
 
 @theme inline {
@@ -42,7 +43,7 @@
 
 /* Hour input */
 [data-type="hour"][data-placeholder="true"] {
-  @apply after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['hh'];
+  @apply after:absolute after:top-px after:block after:h-full after:w-full after:text-desert-400 after:content-['hh'];
 }
 /* Hide the hour placeholder text on focus */
 [data-type="hour"][data-focused="true"][data-placeholder="true"]::after {
@@ -51,7 +52,7 @@
 
 /* Minute input */
 [data-type="minute"][data-placeholder="true"] {
-  @apply w-7   after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['mm'];
+  @apply w-7 after:absolute after:top-px after:block after:h-full after:w-full after:text-desert-400 after:content-['mm'];
 }
 /* Hide the minute placeholder text on focus */
 [data-type="minute"][data-focused="true"][data-placeholder="true"]::after {
@@ -64,7 +65,7 @@
 
 /* Second input */
 [data-type="second"][data-placeholder="true"] {
-  @apply after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['ss'];
+  @apply after:absolute after:top-px after:block after:h-full after:w-full after:text-desert-400 after:content-['ss'];
 }
 /* Hide the second placeholder text on focus */
 [data-type="second"][data-focused="true"][data-placeholder="true"]::after {
