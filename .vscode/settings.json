@@ -3,5 +3,11 @@
     "source.organizeImports.biome": "explicit",
     "source.fixAll.biome": "explicit"
   },
+  "editor.defaultFormatter": "biomejs.biome",
+  "[css]": {
+    "editor.suggest.insertMode": "replace",
+    "cSpell.fixSpellingWithRenameProvider": false,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "cSpell.words": ["opennextjs"]
 }

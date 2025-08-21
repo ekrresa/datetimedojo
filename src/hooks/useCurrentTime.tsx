@@ -1,17 +1,18 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import { useAnimationFrameLoop } from "react-timing-hooks";
+import * as React from 'react'
+
+import { useAnimationFrameLoop } from 'react-timing-hooks'
 
 export function useCurrentTime() {
-  const [currentTime, setCurrentTime] = React.useState(new Date());
+  const [currentTime, setCurrentTime] = React.useState(new Date())
 
   const controls = useAnimationFrameLoop(
     () => {
-      setCurrentTime(new Date());
+      setCurrentTime(new Date())
     },
-    { startOnMount: true }
-  );
+    { startOnMount: true },
+  )
 
-  return { currentTime, controls };
+  return { currentTime, controls }
 }

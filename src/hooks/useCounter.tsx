@@ -1,32 +1,33 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import { useInterval } from "react-timing-hooks";
+import * as React from 'react'
+
+import { useInterval } from 'react-timing-hooks'
 
 export default function useCounter() {
-  const [counter, setCounter] = React.useState(1);
+  const [counter, setCounter] = React.useState(1)
 
   const { start, stop } = useInterval(
     () => {
-      setCounter((c) => c - 1);
+      setCounter(c => c - 1)
     },
     1000,
-    { startOnMount: true }
-  );
+    { startOnMount: true },
+  )
 
   React.useEffect(() => {
     if (counter === 0) {
-      stop();
+      stop()
     }
-  }, [counter, stop]);
+  }, [counter, stop])
 
   const startCountdown = React.useCallback(() => {
-    setCounter(1);
-    start();
-  }, [start]);
+    setCounter(1)
+    start()
+  }, [start])
 
   return {
     counter,
     startCountdown,
-  };
+  }
 }

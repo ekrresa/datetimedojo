@@ -1,3 +1,5 @@
+'use client'
+
 import { CopyIcon } from 'lucide-react'
 import { Button } from 'react-aria-components'
 import { toast } from 'sonner'

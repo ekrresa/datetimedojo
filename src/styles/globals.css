@@ -1,6 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "tailwindcss-react-aria-components";
+
+@theme inline {
+  --font-sans: var(--font-app);
+}
+
+@theme {
+  --color-desert-50: #f3f3f2;
+  --color-desert-100: #e5e5e2;
+  --color-desert-200: #cecec8;
+  --color-desert-300: #b0b0a6;
+  --color-desert-400: #949487;
+  --color-desert-500: #6a6a5f;
+  --color-desert-600: #5d5d53;
+  --color-desert-700: #494942;
+  --color-desert-800: #3c3d37;
+  --color-desert-900: #363631;
+  --color-desert-950: #1b1b18;
+
+  --color-opium-50: #f9f7f7;
+  --color-opium-100: #f3edee;
+  --color-opium-200: #e9dfe0;
+  --color-opium-300: #d9c8ca;
+  --color-opium-400: #c2a7a9;
+  --color-opium-500: #ab898c;
+  --color-opium-600: #936f72;
+  --color-opium-700: #7a5b5e;
+  --color-opium-800: #674d4f;
+  --color-opium-900: #584446;
+  --color-opium-950: #2d2223;
+
+  --color-pearl: #12202a;
+  --color-charcoal: #0c1821;
+}
 
 @layer base {
   body * {
@@ -9,32 +41,32 @@
 }
 
 /* Hour input */
-[data-type='hour'][data-placeholder='true'] {
-  @apply text-white after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['hh'];
+[data-type="hour"][data-placeholder="true"] {
+  @apply after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['hh'];
 }
 /* Hide the hour placeholder text on focus */
-[data-type='hour'][data-focused='true'][data-placeholder='true']::after {
+[data-type="hour"][data-focused="true"][data-placeholder="true"]::after {
   @apply hidden;
 }
 
 /* Minute input */
-[data-type='minute'][data-placeholder='true'] {
-  @apply w-7 text-white after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['mm'];
+[data-type="minute"][data-placeholder="true"] {
+  @apply w-7   after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['mm'];
 }
 /* Hide the minute placeholder text on focus */
-[data-type='minute'][data-focused='true'][data-placeholder='true']::after {
+[data-type="minute"][data-focused="true"][data-placeholder="true"]::after {
   @apply hidden;
 }
 /* Reset the input width on focus */
-[data-type='minute'][data-focused='true'] {
+[data-type="minute"][data-focused="true"] {
   @apply w-auto;
 }
 
 /* Second input */
-[data-type='second'][data-placeholder='true'] {
-  @apply text-white after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['ss'];
+[data-type="second"][data-placeholder="true"] {
+  @apply after:absolute after:top-[1px] after:block after:h-full after:w-full after:text-desert-400 after:content-['ss'];
 }
 /* Hide the second placeholder text on focus */
-[data-type='second'][data-focused='true'][data-placeholder='true']::after {
+[data-type="second"][data-focused="true"][data-placeholder="true"]::after {
   @apply hidden;
 }
