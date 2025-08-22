@@ -4,11 +4,13 @@ import Image from 'next/image'
 
 import { Button } from 'react-aria-components'
 
+import { GITHUB_URL } from '@/helpers/constants'
+import { useAppTheme } from '@/hooks/useAppTheme'
+
 import GithubIcon from '@/assets/github.svg'
 import MoonIcon from '@/assets/moon.svg'
 import SunIcon from '@/assets/sun.svg'
-import { GITHUB_URL } from '@/helpers/constants'
-import { useAppTheme } from '@/hooks/useAppTheme'
+import XIcon from '@/assets/x.svg'
 
 export default function Header() {
   const { theme, toggleTheme } = useAppTheme()
@@ -20,11 +22,15 @@ export default function Header() {
 
         <div className="inline-flex items-center gap-4 text-desert-600">
           <a href={GITHUB_URL} target="_blank" rel="noopener">
-            <GithubIcon className="text-desert-600" width={24} />
+            <GithubIcon className="text-desert-600" width={22} />
+          </a>
+
+          <a href={GITHUB_URL} target="_blank" rel="noopener">
+            <XIcon className="text-desert-600" width={22} />
           </a>
 
           <Button
-            className="flex h-8 w-8 items-center justify-center outline-none dark:text-opium-100"
+            className="flex items-center justify-center outline-none dark:text-opium-100"
             aria-label="Dark mode toggle"
             onPress={toggleTheme}
           >
