@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { Geist } from 'next/font/google'
+import localFont from 'next/font/local'
 
 import { ThemeProvider } from '@/hooks/useAppTheme'
 
@@ -59,16 +59,16 @@ export const metadata: Metadata = {
   },
 }
 
-const geist = Geist({
-  subsets: ['latin'],
+const Satoshi = localFont({
+  src: '../assets/Satoshi.woff2',
   display: 'swap',
   fallback: ['system-ui', 'sans-serif'],
-  variable: '--font-app',
+  variable: '--font-satoshi',
 })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={geist.variable}>
+    <html lang="en" className={`${Satoshi.variable}`}>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>

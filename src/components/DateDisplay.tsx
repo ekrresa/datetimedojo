@@ -1,8 +1,9 @@
 'use client'
 
-import { CopyIcon } from 'lucide-react'
 import { Button } from 'react-aria-components'
 import { toast } from 'sonner'
+
+import CopyIcon from '@/assets/copy.svg'
 
 interface Props {
   loading: boolean
@@ -22,8 +23,8 @@ export function DateDisplay(props: Props) {
   }
 
   return (
-    <div className="flex flex-col justify-between sm:flex-row sm:items-center sm:gap-4">
-      <p className="shrink-0 grow-0 text-sm font-semibold text-opium-900 sm:basis-[125px] sm:text-right dark:text-desert-100">
+    <div className="flex flex-col justify-between sm:flex-row sm:items-center sm:gap-4 bg-desert-50 px-2 py-1.5 rounded-md">
+      <p className="shrink-0 grow-0 text-sm text-desert-900 sm:basis-[125px] dark:text-desert-100">
         {dateFormat}
       </p>
 
@@ -40,7 +41,7 @@ export function DateDisplay(props: Props) {
             toast('Copied to clipboard')
           }}
         >
-          <CopyIcon size={16} strokeWidth={1.5} />
+          <CopyIcon width={16} strokeWidth={1.5} />
         </Button>
       </div>
     </div>

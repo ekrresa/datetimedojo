@@ -9,5 +9,9 @@
     "cSpell.fixSpellingWithRenameProvider": false,
     "editor.defaultFormatter": "biomejs.biome"
   },
+  "[html]": {
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "cSpell.words": ["opennextjs"]
 }

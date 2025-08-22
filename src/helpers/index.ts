@@ -1,4 +1,6 @@
+import { type ClassValue, clsx } from 'clsx'
 import { isValid } from 'date-fns'
+import { twMerge } from 'tailwind-merge'
 
 export function convertDateToExcelFormat(date: Date) {
   return (date.getTime() / (1000 * 60 * 60 * 24) + 25569).toFixed(12)
@@ -68,4 +70,8 @@ export function parseDateString(date: string) {
   console.log('no match')
 
   return null
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }

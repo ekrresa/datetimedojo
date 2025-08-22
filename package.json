@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,23 +13,25 @@
   },
   "dependencies": {
     "@opennextjs/cloudflare": "1.6.5",
+    "clsx": "2.1.1",
     "date-fns": "^4.1.0",
-    "lucide-react": "^0.540.0",
     "next": "15.5.0",
     "next-seo": "^6.4.0",
     "react": "^19.1.1",
     "react-aria-components": "^1.11.0",
     "react-dom": "^19.1.1",
     "react-timing-hooks": "^4.0.2",
-    "sonner": "^2.0.7"
+    "sonner": "^2.0.7",
+    "tailwind-merge": "3.3.1"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "4.1.12",
     "@types/node": "^20",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
-    "autoprefixer": "^10.0.1",
+    "autoprefixer": "^10.4.21",
     "geist": "^1.4.2",
     "lefthook": "1.12.3",
     "postcss": "^8.5.6",

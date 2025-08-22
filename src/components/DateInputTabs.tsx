@@ -17,7 +17,12 @@ import {
   TextField,
 } from 'react-aria-components'
 
-import { parseDateString } from '@/helpers'
+import { cn, parseDateString } from '@/helpers'
+
+const tabs = [
+  { id: 'select-date', label: 'Select date' },
+  { id: 'convert-date', label: 'Convert date' },
+]
 
 interface Props {
   onDateTimeChange: (date: Date | null) => void
@@ -30,19 +35,19 @@ export default function DateInputTabs(props: Props) {
   return (
     <Tabs className="flex orientation-horizontal:flex-col">
       <TabList className="flex" aria-label="Date inputs">
-        <Tab
-          id="select-date"
-          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900 dark:border-desert-600 dark:text-desert-600 dark:selected:border-opium-100 dark:selected:text-desert-100"
-        >
-          Enter a date
-        </Tab>
-        <Tab
-          id="convert-date"
-          className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-400 outline-none transition-colors duration-300 selected:border-opium-800 selected:text-opium-900 dark:border-desert-500 dark:text-desert-500 dark:selected:border-opium-100 dark:selected:text-desert-100"
-        >
-          Convert a date
-        </Tab>
+        {tabs.map(tab => {
+          return (
+            <Tab
+              key={tab.id}
+              id={tab.id}
+              className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-300 outline-none text-lg transition-colors duration-300 selected:border-desert-800 selected:text-desert-900 dark:border-desert-600 dark:text-desert-600 dark:selected:border-opium-100 dark:selected:text-desert-100"
+            >
+              {tab.label}
+            </Tab>
+          )
+        })}
       </TabList>
+
       <TabPanel id="select-date" className="mt-2 flex items-start gap-1 outline-none">
         <DateField
           granularity="second"
@@ -56,26 +61,35 @@ export default function DateInputTabs(props: Props) {
         >
           <DateInput
             className={({ isFocusWithin }) =>
-              `flex flex-1 rounded-md border bg-white p-1.5 ${
+              `flex flex-1 rounded-md border border-desert-300 bg-white px-1.5 py-2 ${
                 isFocusWithin
-                  ? 'outline outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
+                  ? 'outline outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
                   : ''
               }`
             }
           >
-            {segment => (
-              <DateSegment
-                className={({ isPlaceholder, isFocused }) =>
-                  `relative tabular-nums type-literal:px-1 focus:outline-none ${
-                    isPlaceholder ? 'italic text-desert-400' : 'text-desert-800'
-                  } ${isFocused ? 'rounded-sm bg-opium-800   caret-transparent' : ''}`
-                }
-                segment={segment}
-              />
-            )}
+            {segment => {
+              const ddd = ['hour', 'minute', 'second'].includes(segment.type)
+
+              return (
+                <DateSegment
+                  className={({ isPlaceholder, isFocused }) =>
+                    cn(
+                      `relative tabular-nums type-literal:px-1 text-desert-800 focus:outline-none transition-all`,
+                      {
+                        'text-desert-400': isPlaceholder,
+                        'rounded-sm text-desert-900 bg-desert-200 px-1': isFocused,
+                        'text-transparent min-w-5': ddd,
+                      },
+                    )
+                  }
+                  segment={segment}
+                />
+              )
+            }}
           </DateInput>
           <Text
-            className="mt-1 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
+            className="mt-2 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
             slot="description"
           >
             Input a date and time by filling all segments. Date is in 24h format.
@@ -108,7 +122,7 @@ export default function DateInputTabs(props: Props) {
         >
           <Input
             className={({ isInvalid, isFocused }) =>
-              `w-full min-w-0 rounded-md border bg-white p-1.5 text-desert-900 outline-none transition-colors placeholder:text-sm placeholder:text-desert-500 ${
+              `w-full min-w-0 rounded-md border border-desert-300 bg-white px-1.5 py-2 text-desert-900 outline-none transition-colors placeholder:text-sm placeholder:text-desert-500 ${
                 isInvalid
                   ? 'outline-red-600 dark:outline-re-400 outline-1 outline-offset-1 dark:outline-offset-2'
                   : ''

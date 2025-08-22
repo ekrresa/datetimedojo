@@ -44,7 +44,9 @@
               ":BLANK_LINE:",
               ":PACKAGE:",
               ":BLANK_LINE:",
-              "@/*"
+              "@/*",
+              ":BLANK_LINE:",
+              "@/assets/*"
             ]
           }
         }

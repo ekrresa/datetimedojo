@@ -3,11 +3,11 @@
 @plugin "tailwindcss-react-aria-components";
 
 @theme inline {
-  --font-sans: var(--font-app);
+  --font-sans: var(--font-satoshi);
 }
 
 @theme {
-  --color-desert-50: #f3f3f2;
+  --color-desert-50: #f8f8f8;
   --color-desert-100: #e5e5e2;
   --color-desert-200: #cecec8;
   --color-desert-300: #b0b0a6;
@@ -36,8 +36,12 @@
 }
 
 @layer base {
-  body * {
-    @apply transition-colors duration-300;
+  body {
+    @apply transition-colors duration-300 text-desert-900 bg-desert-50 font-sans;
+  }
+
+  button {
+    @apply cursor-pointer;
   }
 }
 
@@ -52,7 +56,7 @@
 
 /* Minute input */
 [data-type="minute"][data-placeholder="true"] {
-  @apply w-7 after:absolute after:top-px after:block after:h-full after:w-full after:text-desert-400 after:content-['mm'];
+  @apply after:absolute after:top-px after:block after:h-full after:w-full after:text-desert-400 after:content-['mm'];
 }
 /* Hide the minute placeholder text on focus */
 [data-type="minute"][data-focused="true"][data-placeholder="true"]::after {
