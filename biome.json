@@ -15,7 +15,14 @@
     "expand": "auto",
     "useEditorconfig": true
   },
-  "linter": { "enabled": true, "rules": { "recommended": false } },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "next": "recommended",
+      "react": "recommended"
+    },
+    "rules": { "recommended": false }
+  },
   "javascript": {
     "formatter": {
       "jsxQuoteStyle": "double",
@@ -44,7 +51,9 @@
               ":BLANK_LINE:",
               ":PACKAGE:",
               ":BLANK_LINE:",
-              "@/*",
+              "@/components/*",
+              "@/helpers/*",
+              "@/hooks/*",
               ":BLANK_LINE:",
               "@/assets/*"
             ]

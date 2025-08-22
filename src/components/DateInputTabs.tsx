@@ -3,6 +3,7 @@
 import * as React from 'react'
 
 import { isValid } from 'date-fns'
+import { useSetAtom } from 'jotai'
 import {
   DateField,
   DateInput,
@@ -17,6 +18,7 @@ import {
   TextField,
 } from 'react-aria-components'
 
+import { dateAtom } from '@/app/components/atoms'
 import { cn, parseDateString } from '@/helpers'
 
 const tabs = [
@@ -24,13 +26,10 @@ const tabs = [
   { id: 'convert-date', label: 'Convert date' },
 ]
 
-interface Props {
-  onDateTimeChange: (date: Date | null) => void
-}
-export default function DateInputTabs(props: Props) {
-  const { onDateTimeChange } = props
-
+export default function DateInputTabs() {
   const [inputDateError, setInputDateError] = React.useState(false)
+
+  const setDateTime = useSetAtom(dateAtom)
 
   return (
     <Tabs className="flex orientation-horizontal:flex-col">
@@ -54,7 +53,7 @@ export default function DateInputTabs(props: Props) {
           aria-label="Date Input"
           className="flex flex-1 flex-col"
           onChange={dateValue => {
-            onDateTimeChange(dateValue ? new Date(dateValue.toString()) : null)
+            setDateTime(dateValue ? new Date(dateValue.toString()) : null)
           }}
           hourCycle={24}
           autoFocus
@@ -109,12 +108,12 @@ export default function DateInputTabs(props: Props) {
               const isValidDate = isValid(formattedValue)
 
               if (isValidDate) {
-                onDateTimeChange(formattedValue)
+                setDateTime(formattedValue)
               } else {
                 setInputDateError(true)
               }
             } else {
-              onDateTimeChange(null)
+              setDateTime(null)
             }
           }}
           isInvalid={inputDateError}

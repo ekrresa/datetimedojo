@@ -11,44 +11,44 @@ import {
   getUnixTime,
   parseISO,
 } from 'date-fns'
-
-import { convertDateToExcelFormat } from '@/helpers'
+import { useAtomValue } from 'jotai'
 
 import { DateDisplay } from '@/components/DateDisplay'
-import DateInputTabs from '@/components/DateInputTabs'
 import useCounter from '@/hooks/useCounter'
 import { useCurrentTime } from '@/hooks/useCurrentTime'
 import { useIsMounted } from '@/hooks/useIsMounted'
 
-export default function Lobby() {
+import { convertDateToExcelFormat } from '@/helpers'
+import { dateAtom } from './atoms'
+
+export default function Lobby(props: React.PropsWithChildren) {
+  const { children } = props
+
   const isMounted = useIsMounted()
-
   const { currentTime, controls } = useCurrentTime()
-
   const { counter, startCountdown } = useCounter()
 
   const [selectedDateTime, setSelectedDateTime] = React.useState<Date | null>(null)
 
+  const dateValue = useAtomValue(dateAtom)
+
+  React.useEffect(() => {
+    setSelectedDateTime(dateValue)
+    startCountdown()
+
+    if (dateValue) {
+      controls.pause()
+    } else {
+      controls.resume()
+    }
+  }, [controls.pause, controls.resume, startCountdown, dateValue])
+
   const ISODate = parseISO(selectedDateTime?.toISOString() ?? currentTime.toISOString())
-
-  const handleDateChange = React.useCallback(
-    (date: Date | null) => {
-      setSelectedDateTime(date)
-      startCountdown()
-
-      if (date) {
-        controls.pause()
-      } else {
-        controls.resume()
-      }
-    },
-    [controls, startCountdown],
-  )
 
   return (
     <section className="flex flex-col items-center gap-4 max-w-152 mx-auto overflow-hidden">
       <div className="dark:bg-pearl bg-white p-4 w-full border border-desert-200 rounded-xl  shadow-none sm:shadow-lg shadow-desert-50">
-        <DateInputTabs onDateTimeChange={handleDateChange} />
+        {children}
       </div>
 
       <div className="dark:bg-pearl mb-40 w-full rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-50 sm:shadow-lg dark:border-desert-900 dark:shadow-desert-900/5">

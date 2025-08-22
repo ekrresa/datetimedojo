@@ -1,4 +1,6 @@
+import DateInputTabs from '@/components/DateInputTabs'
 import { PORTFOLIO_URL } from '@/helpers/constants'
+
 import Header from './components/Header'
 import Lobby from './components/Lobby'
 
@@ -18,7 +20,9 @@ export default function Page() {
           </p>
         </div>
 
-        <Lobby />
+        <Lobby>
+          <DateInputTabs />
+        </Lobby>
       </main>
 
       <footer className="dark:bg-charcoal mt-auto w-full border-t border-desert-500/20">
