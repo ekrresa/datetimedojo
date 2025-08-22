@@ -20,6 +20,7 @@ import {
 
 import { dateAtom } from '@/app/components/atoms'
 import { cn, parseDateString } from '@/helpers'
+import SegmentDisplay from '../app/components/SegmentDisplay'
 
 const tabs = [
   { id: 'select-date', label: 'Select date' },
@@ -68,22 +69,21 @@ export default function DateInputTabs() {
             }
           >
             {segment => {
-              const ddd = ['hour', 'minute', 'second'].includes(segment.type)
-
               return (
                 <DateSegment
                   className={({ isPlaceholder, isFocused }) =>
                     cn(
-                      `relative tabular-nums type-literal:px-1 text-desert-800 focus:outline-none transition-all`,
+                      `relative tabular-nums type-literal:px-0.5 text-desert-800 focus:outline-none transition-all`,
                       {
                         'text-desert-400': isPlaceholder,
                         'rounded-sm text-desert-900 bg-desert-200 px-1': isFocused,
-                        'text-transparent min-w-5': ddd,
                       },
                     )
                   }
                   segment={segment}
-                />
+                >
+                  <SegmentDisplay segment={segment} />
+                </DateSegment>
               )
             }}
           </DateInput>
