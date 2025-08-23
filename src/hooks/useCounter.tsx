@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import { useInterval } from 'react-timing-hooks'
 
-export default function useCounter() {
+export function useCounter() {
   const [counter, setCounter] = React.useState(1)
 
   const { start, stop } = useInterval(

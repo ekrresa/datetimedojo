@@ -18,9 +18,9 @@ import {
   TextField,
 } from 'react-aria-components'
 
-import { dateAtom } from '@/app/components/atoms'
 import { cn, parseDateString } from '@/helpers'
-import SegmentDisplay from '../app/components/SegmentDisplay'
+import { dateAtom } from '../lib/atoms'
+import SegmentDisplay from './SegmentDisplay'
 
 const tabs = [
   { id: 'select-date', label: 'Select date' },
@@ -121,15 +121,15 @@ export default function DateInputTabs() {
         >
           <Input
             className={({ isInvalid, isFocused }) =>
-              `w-full min-w-0 rounded-md border border-desert-300 bg-white px-1.5 py-2 text-desert-900 outline-none transition-colors placeholder:text-sm placeholder:text-desert-500 ${
-                isInvalid
-                  ? 'outline-red-600 dark:outline-re-400 outline-1 outline-offset-1 dark:outline-offset-2'
-                  : ''
-              } ${
-                isFocused
-                  ? 'outline-1 outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
-                  : ''
-              }`
+              cn(
+                `w-full min-w-0 rounded-md border border-desert-300 bg-white px-1.5 py-2 text-desert-900 outline-none transition-colors placeholder:text-desert-400`,
+                {
+                  'outline-1 outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500':
+                    isFocused,
+                  'outline-red-600 dark:outline-re-400 outline-1 outline-offset-1 dark:outline-offset-2':
+                    isInvalid,
+                },
+              )
             }
             placeholder="Input your date string"
           />
@@ -140,7 +140,7 @@ export default function DateInputTabs() {
             </FieldError>
           ) : (
             <Text
-              className="mt-1 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
+              className="mt-2 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
               slot="description"
             >
               Convert a date string into all formats below.

@@ -2,26 +2,14 @@ import { Metadata } from 'next'
 
 import localFont from 'next/font/local'
 
+import { keywords } from '@/helpers/seo'
 import { ThemeProvider } from '@/hooks/useAppTheme'
 
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'DateTime Dojo',
-  keywords: [
-    'date',
-    'time',
-    'convert dates online',
-    'calendar',
-    'time converter',
-    'online date formatting',
-    'date converter',
-    'date time converter',
-    'date string converter',
-    'date time conversion tool',
-    'date format converter',
-    'date format switcher',
-  ],
+  keywords: keywords,
   openGraph: {
     type: 'website',
     locale: 'en_GB',
@@ -68,7 +56,12 @@ const Satoshi = localFont({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${Satoshi.variable}`}>
+    <html
+      lang="en"
+      className={`${Satoshi.variable}`}
+      data-lt-installed="true"
+      suppressHydrationWarning={true}
+    >
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>

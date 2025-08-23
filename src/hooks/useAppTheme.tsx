@@ -1,74 +1,73 @@
-"use client";
+'use client'
 
-import * as React from "react";
+import * as React from 'react'
 
-export type Theme = "light" | "dark" | null;
+export type Theme = 'light' | 'dark' | null
 
 interface ThemeState {
-  theme: Theme;
-  toggleTheme: () => void;
+  theme: Theme
+  toggleTheme: () => void
 }
 
-const ThemeContext = React.createContext<ThemeState | undefined>(undefined);
+const ThemeContext = React.createContext<ThemeState | undefined>(undefined)
 
-type ThemeProviderProps = React.PropsWithChildren<{}>;
+type ThemeProviderProps = React.PropsWithChildren<{}>
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>(null);
+  const [theme, setTheme] = React.useState<Theme>(null)
 
   // Initialize theme
   useLayoutEffect(() => {
-    const persistedState = localStorage.getItem("app-theme");
+    const persistedState = localStorage.getItem('app-theme')
 
     if (
-      persistedState === "dark" ||
-      (!persistedState &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+      persistedState === 'dark' ||
+      (!persistedState && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
-      setTheme("dark");
+      setTheme('dark')
     } else {
-      setTheme("light");
+      setTheme('light')
     }
-  }, []);
+  }, [])
 
   useLayoutEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
 
     const onDarkModeChange = (evt: MediaQueryListEvent) => {
       if (evt.matches) {
-        setTheme("dark");
+        setTheme('dark')
       } else {
-        setTheme("light");
+        setTheme('light')
       }
-    };
+    }
 
-    mq.addEventListener("change", onDarkModeChange);
+    mq.addEventListener('change', onDarkModeChange)
 
     return () => {
-      mq.removeEventListener("change", onDarkModeChange);
-    };
-  }, []);
+      mq.removeEventListener('change', onDarkModeChange)
+    }
+  }, [])
 
   // Synchronize theme changes to window & localStorage
   React.useEffect(() => {
-    if (!theme) return;
+    if (!theme) return
 
-    const root = window.document.documentElement;
-    const isDark = theme === "dark";
+    const root = window.document.documentElement
+    const isDark = theme === 'dark'
 
     if (isDark) {
-      root.classList.add("dark");
+      root.classList.add('dark')
     } else {
-      root.classList.remove("dark");
+      root.classList.remove('dark')
     }
 
-    localStorage.setItem("app-theme", theme);
-  }, [theme]);
+    localStorage.setItem('app-theme', theme)
+  }, [theme])
 
   const toggleTheme = React.useCallback(
-    () => setTheme((theme) => (theme === "light" ? "dark" : "light")),
-    []
-  );
+    () => setTheme(theme => (theme === 'light' ? 'dark' : 'light')),
+    [],
+  )
 
   return (
     <ThemeContext.Provider
@@ -79,23 +78,21 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     >
       {children}
     </ThemeContext.Provider>
-  );
+  )
 }
 
 export function useAppTheme() {
-  const context = React.useContext(ThemeContext);
+  const context = React.useContext(ThemeContext)
   if (context === undefined) {
-    throw new Error("useTheme must be used within ThemeProvider");
+    throw new Error('useTheme must be used within ThemeProvider')
   }
 
-  return context;
+  return context
 }
 
-declare const window: any;
+declare const window: any
 
 const useLayoutEffect =
-  typeof window !== "undefined" &&
-  window.document &&
-  window.document.createElement
+  typeof window !== 'undefined' && window.document && window.document.createElement
     ? React.useLayoutEffect
-    : React.useEffect;
+    : React.useEffect

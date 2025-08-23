@@ -28,46 +28,36 @@ const TIMESTAMP_REGEX = /^[0-9]{1,13}$/
 
 export function parseDateString(date: string) {
   if (ISO9075_REGEX.test(date)) {
-    console.log('iso9075')
     return new Date(date)
   }
 
   if (RFC3339_REGEX.test(date)) {
-    console.log('rfc3339')
     return new Date(date)
   }
 
   if (RFC7231_REGEX.test(date)) {
-    console.log('rfc7231')
     return new Date(date)
   }
 
   if (ISO8601_REGEX.test(date)) {
-    console.log('iso8601')
     return new Date(date)
   }
 
   if (UNIX_TIMESTAMP_REGEX.test(date)) {
-    console.log('unix')
     return new Date(Number(date) * 1000)
   }
 
   if (TIMESTAMP_REGEX.test(date)) {
-    console.log('timestamp')
     return new Date(Number(date))
   }
 
   if (EXCEL_FORMAT_REGEX.test(date)) {
-    console.log('excel')
     return getDateFromExcel(date)
   }
 
   if (isValid(new Date(date))) {
-    console.log('date')
     return new Date(date)
   }
-
-  console.log('no match')
 
   return null
 }

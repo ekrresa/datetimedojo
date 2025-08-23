@@ -2,6 +2,8 @@
 
 @plugin "tailwindcss-react-aria-components";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-sans: var(--font-satoshi);
 }
@@ -37,7 +39,7 @@
 
 @layer base {
   body {
-    @apply transition-colors duration-300 text-desert-900 bg-desert-50 font-sans;
+    @apply transition-colors duration-300 text-desert-900 bg-desert-50 dark:bg-desert-950 font-sans;
   }
 
   button {

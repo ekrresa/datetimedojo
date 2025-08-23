@@ -1,6 +1,6 @@
-import DateInputTabs from '@/components/DateInputTabs'
 import { PORTFOLIO_URL } from '@/helpers/constants'
 
+import DateInputTabs from './components/DateInputTabs'
 import Header from './components/Header'
 import Lobby from './components/Lobby'
 

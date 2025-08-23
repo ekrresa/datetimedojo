@@ -13,13 +13,13 @@ import {
 } from 'date-fns'
 import { useAtomValue } from 'jotai'
 
-import { DateDisplay } from '@/components/DateDisplay'
-import useCounter from '@/hooks/useCounter'
+import { useCounter } from '@/hooks/useCounter'
 import { useCurrentTime } from '@/hooks/useCurrentTime'
 import { useIsMounted } from '@/hooks/useIsMounted'
 
 import { convertDateToExcelFormat } from '@/helpers'
-import { dateAtom } from './atoms'
+import { dateAtom } from '../lib/atoms'
+import { DateDisplay } from './DateDisplay'
 
 export default function Lobby(props: React.PropsWithChildren) {
   const { children } = props

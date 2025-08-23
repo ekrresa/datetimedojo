@@ -1,5 +1,3 @@
-import { NextSeoProps } from 'next-seo'
-
 export const keywords = [
   'date',
   'time',
@@ -14,13 +12,3 @@ export const keywords = [
   'date format converter',
   'date format switcher',
 ]
-
-export const SEO: NextSeoProps = {
-  canonical: 'https://datetimedojo.com',
-  additionalMetaTags: [
-    {
-      name: 'keywords',
-      content: keywords.join(', '),
-    },
-  ],
-}

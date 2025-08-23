@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from 'react-aria-components'
-import { toast } from 'sonner'
 
 import CopyIcon from '@/assets/copy.svg'
 
@@ -38,7 +37,6 @@ export function DateDisplay(props: Props) {
           className="rounded-md p-2 text-opium-800 hover:bg-desert-50 dark:text-opium-100 dark:hover:bg-gray-800"
           onPress={() => {
             navigator.clipboard.writeText(formattedDate.toString())
-            toast('Copied to clipboard')
           }}
         >
           <CopyIcon width={16} strokeWidth={1.5} />
