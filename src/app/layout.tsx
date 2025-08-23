@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import { Provider } from 'jotai'
 import localFont from 'next/font/local'
 
 import { keywords } from '@/helpers/seo'
@@ -63,7 +64,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning={true}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Provider>{children}</Provider>
+        </ThemeProvider>
       </body>
     </html>
   )
