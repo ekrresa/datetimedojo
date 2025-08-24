@@ -64,7 +64,7 @@ export default function DateInputTabs() {
               cn(
                 `flex flex-1 rounded-md border border-desert-300 outline outline-transparent bg-white px-1.5 py-2 transition-colors`,
                 {
-                  'outline-desert-800 dark:outline-offset-1 dark:outline-desert-500': isFocusWithin,
+                  'outline-desert-800 dark:outline-offset-1 dark:outline-desert-400': isFocusWithin,
                 },
               )
             }
@@ -126,8 +126,7 @@ export default function DateInputTabs() {
                 `w-full min-w-0 rounded-md border border-desert-300 bg-white px-1.5 py-2 text-desert-900 outline-1 outline-transparent transition-colors placeholder:text-desert-400`,
                 {
                   'outline-desert-800 dark:outline-offset-1 dark:outline-desert-400': isFocused,
-                  'outline-red-600 dark:outline-red-400 outline-1 outline-offset-1 dark:outline-offset-2':
-                    isInvalid,
+                  'outline-red-400 outline-1 dark:outline-offset-1 border-red-400': isInvalid,
                 },
               )
             }
@@ -135,7 +134,7 @@ export default function DateInputTabs() {
           />
 
           {inputDateError ? (
-            <FieldError className="text-red-600 dark:text-red-400 tracking-wide mt-1 pl-1 text-xs">
+            <FieldError className="text-red-500 dark:text-red-400 tracking-wide mt-1 pl-1 text-xs">
               Please enter a valid date string
             </FieldError>
           ) : (

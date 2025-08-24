@@ -1,8 +1,4 @@
-'use client'
-
-import { Button } from 'react-aria-components'
-
-import CopyIcon from '@/assets/copy.svg'
+import { CopyButton } from './CopyButton'
 
 interface Props {
   loading: boolean
@@ -32,15 +28,7 @@ export function DateDisplay(props: Props) {
           {formattedDate}
         </p>
 
-        <Button
-          aria-label="Copy date"
-          className="rounded-md p-2 text-desert-800 hover:bg-desert-50 dark:text-desert-300 dark:hover:bg-gray-800"
-          onPress={() => {
-            navigator.clipboard.writeText(formattedDate.toString())
-          }}
-        >
-          <CopyIcon width={16} strokeWidth={1.5} />
-        </Button>
+        <CopyButton text={formattedDate.toString()} />
       </div>
     </div>
   )
