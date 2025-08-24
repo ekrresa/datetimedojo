@@ -18,7 +18,21 @@ export default function Header() {
   return (
     <header className="w-full border-b border-desert-500/20">
       <div className="flex items-center justify-between max-w-250 py-4 mx-auto px-5">
-        <Image className="w-7" src="/logo.png" width={100} height={100} alt="app logo" />
+        <Image
+          className="w-7 dark:hidden"
+          src="/logo.png"
+          width={100}
+          height={100}
+          alt="app logo"
+        />
+
+        <Image
+          className="w-7 hidden dark:block"
+          src="/dark-logo.png"
+          width={100}
+          height={100}
+          alt="app logo"
+        />
 
         <div className="inline-flex items-center gap-4 text-desert-600 dark:text-desert-100">
           <a
