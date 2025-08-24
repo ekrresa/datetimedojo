@@ -27,15 +27,10 @@ export default function Page() {
 
       <footer className="dark:bg-charcoal mt-auto w-full border-t border-desert-500/20">
         <div className="mx-auto flex max-w-250 items-center justify-center gap-2 text-sm text-desert-600 px-5 py-4">
-          <p className="uppercase"> &#169; {new Date().getFullYear()}</p>
+          <p className="uppercase"> &copy; {new Date().getFullYear()}</p>
 
           <p className="flex items-center gap-1 uppercase">
-            <a
-              href={PORTFOLIO_URL}
-              className="transition-all hover:text-opium-900"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer noopener">
               <span className="mr-1 hidden sm:inline">Developed by</span>
               <span>Ochuko Ekrresa</span>
             </a>

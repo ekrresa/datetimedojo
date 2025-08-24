@@ -61,11 +61,12 @@ export default function DateInputTabs() {
         >
           <DateInput
             className={({ isFocusWithin }) =>
-              `flex flex-1 rounded-md border border-desert-300 bg-white px-1.5 py-2 ${
-                isFocusWithin
-                  ? 'outline outline-opium-800 dark:outline-offset-2 dark:outline-desert-500'
-                  : ''
-              }`
+              cn(
+                `flex flex-1 rounded-md border border-desert-300 outline outline-transparent bg-white px-1.5 py-2 transition-colors`,
+                {
+                  'outline-opium-800 dark:outline-offset-2 dark:outline-desert-500': isFocusWithin,
+                },
+              )
             }
           >
             {segment => {
@@ -122,10 +123,9 @@ export default function DateInputTabs() {
           <Input
             className={({ isInvalid, isFocused }) =>
               cn(
-                `w-full min-w-0 rounded-md border border-desert-300 bg-white px-1.5 py-2 text-desert-900 outline-none transition-colors placeholder:text-desert-400`,
+                `w-full min-w-0 rounded-md border border-desert-300 bg-white px-1.5 py-2 text-desert-900 outline-1 outline-transparent transition-colors placeholder:text-desert-400`,
                 {
-                  'outline-1 outline-offset-1 outline-opium-800 dark:outline-offset-2 dark:outline-desert-500':
-                    isFocused,
+                  'outline-opium-800 dark:outline-offset-2 dark:outline-desert-500': isFocused,
                   'outline-red-600 dark:outline-re-400 outline-1 outline-offset-1 dark:outline-offset-2':
                     isInvalid,
                 },
