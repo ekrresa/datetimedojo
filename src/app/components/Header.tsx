@@ -20,21 +20,21 @@ export default function Header() {
       <div className="flex items-center justify-between max-w-250 py-4 mx-auto px-5">
         <Image className="w-7" src="/logo.png" width={100} height={100} alt="app logo" />
 
-        <div className="inline-flex items-center gap-4 text-desert-600">
+        <div className="inline-flex items-center gap-4 text-desert-600 dark:text-desert-200">
           <a href={GITHUB_URL} target="_blank" rel="noopener">
-            <GithubIcon className="text-desert-600" width={22} />
+            <GithubIcon className="" width={22} />
           </a>
 
           <a href={GITHUB_URL} target="_blank" rel="noopener">
-            <XIcon className="text-desert-600" width={22} />
+            <XIcon className="" width={22} />
           </a>
 
           <Button
-            className="flex items-center justify-center outline-none dark:text-opium-100"
+            className="flex items-center justify-center outline-none dark:text-desert-100"
             aria-label="Dark mode toggle"
             onPress={toggleTheme}
           >
-            {theme === 'dark' ? <SunIcon width={28} /> : <MoonIcon width={28} />}
+            {theme === 'dark' ? <SunIcon width={26} /> : <MoonIcon width={24} />}
           </Button>
         </div>
       </div>

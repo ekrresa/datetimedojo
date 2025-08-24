@@ -40,7 +40,7 @@ export default function DateInputTabs() {
             <Tab
               key={tab.id}
               id={tab.id}
-              className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-300 outline-none text-lg transition-colors duration-300 selected:border-desert-800 selected:text-desert-900 dark:border-desert-600 dark:text-desert-600 dark:selected:border-opium-100 dark:selected:text-desert-100"
+              className="relative flex-1 cursor-pointer border-b-[2.5px] border-desert-200 px-1 py-2 text-desert-300 outline-none text-lg transition-colors duration-300 selected:border-desert-800 selected:text-desert-900 dark:border-desert-500 dark:text-desert-500 dark:selected:border-desert-100 dark:selected:text-desert-100"
             >
               {tab.label}
             </Tab>
@@ -64,7 +64,7 @@ export default function DateInputTabs() {
               cn(
                 `flex flex-1 rounded-md border border-desert-300 outline outline-transparent bg-white px-1.5 py-2 transition-colors`,
                 {
-                  'outline-opium-800 dark:outline-offset-2 dark:outline-desert-500': isFocusWithin,
+                  'outline-desert-800 dark:outline-offset-1 dark:outline-desert-500': isFocusWithin,
                 },
               )
             }
@@ -89,10 +89,10 @@ export default function DateInputTabs() {
             }}
           </DateInput>
           <Text
-            className="mt-2 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
+            className="mt-2 pl-1 text-xs italic text-desert-600 dark:text-desert-300 tracking-wide"
             slot="description"
           >
-            Input a date and time by filling all segments. Date is in 24h format.
+            Input a date and time in 24-hour format, filling all segments.
           </Text>
         </DateField>
       </TabPanel>
@@ -125,8 +125,8 @@ export default function DateInputTabs() {
               cn(
                 `w-full min-w-0 rounded-md border border-desert-300 bg-white px-1.5 py-2 text-desert-900 outline-1 outline-transparent transition-colors placeholder:text-desert-400`,
                 {
-                  'outline-opium-800 dark:outline-offset-2 dark:outline-desert-500': isFocused,
-                  'outline-red-600 dark:outline-re-400 outline-1 outline-offset-1 dark:outline-offset-2':
+                  'outline-desert-800 dark:outline-offset-1 dark:outline-desert-400': isFocused,
+                  'outline-red-600 dark:outline-red-400 outline-1 outline-offset-1 dark:outline-offset-2':
                     isInvalid,
                 },
               )
@@ -135,12 +135,12 @@ export default function DateInputTabs() {
           />
 
           {inputDateError ? (
-            <FieldError className="text-red-600 dark:text-red-400 mt-1 pl-1 text-xs">
-              Invalid date string
+            <FieldError className="text-red-600 dark:text-red-400 tracking-wide mt-1 pl-1 text-xs">
+              Please enter a valid date string
             </FieldError>
           ) : (
             <Text
-              className="mt-2 pl-1 text-xs italic text-desert-600 dark:text-desert-300"
+              className="mt-2 pl-1 text-xs italic text-desert-600 dark:text-desert-300 tracking-wide"
               slot="description"
             >
               Convert a date string into all formats below.

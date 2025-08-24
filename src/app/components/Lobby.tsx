@@ -47,14 +47,14 @@ export default function Lobby(props: React.PropsWithChildren) {
 
   return (
     <section className="flex flex-col items-center gap-4 max-w-152 mx-auto overflow-hidden">
-      <div className="dark:bg-pearl bg-white p-4 w-full border border-desert-200 rounded-xl  shadow-none sm:shadow-lg shadow-desert-50">
+      <div className="dark:bg-pearl bg-white p-4 w-full border border-desert-200 dark:border-desert-500/20 rounded-xl shadow-none sm:shadow-lg shadow-desert-50 dark:shadow-charcoal-950">
         {children}
       </div>
 
-      <div className="dark:bg-pearl mb-40 w-full rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-50 sm:shadow-lg dark:border-desert-900 dark:shadow-desert-900/5">
+      <div className="dark:bg-pearl mb-40 w-full rounded-xl border border-desert-200 bg-white shadow-none shadow-desert-50 sm:shadow-lg dark:border-desert-500/20 dark:shadow-desert-900/5">
         <React.Suspense key={isMounted ? 'client' : 'server'}>
           <div className="px-4 py-5">
-            <h2 className="mb-4 text-center text-2xl font-semibold text-opium-950 dark:text-opium-50">
+            <h2 className="mb-4 text-center text-2xl font-semibold text-desert-950 dark:text-desert-100">
               {selectedDateTime ? 'Selected date' : 'Current time'}
             </h2>
 

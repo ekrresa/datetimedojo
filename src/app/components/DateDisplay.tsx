@@ -22,7 +22,7 @@ export function DateDisplay(props: Props) {
   }
 
   return (
-    <div className="flex flex-col justify-between sm:flex-row sm:items-center sm:gap-4 bg-desert-50 px-2 py-1.5 rounded-md">
+    <div className="flex flex-col justify-between sm:flex-row sm:items-center sm:gap-4 bg-desert-50 dark:bg-charcoal-950 px-2 py-1.5 rounded-md">
       <p className="shrink-0 grow-0 text-sm text-desert-900 sm:basis-[125px] dark:text-desert-100">
         {dateFormat}
       </p>
@@ -34,7 +34,7 @@ export function DateDisplay(props: Props) {
 
         <Button
           aria-label="Copy date"
-          className="rounded-md p-2 text-opium-800 hover:bg-desert-50 dark:text-opium-100 dark:hover:bg-gray-800"
+          className="rounded-md p-2 text-desert-800 hover:bg-desert-50 dark:text-desert-300 dark:hover:bg-gray-800"
           onPress={() => {
             navigator.clipboard.writeText(formattedDate.toString())
           }}

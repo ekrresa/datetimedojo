@@ -21,25 +21,35 @@
   --color-desert-900: #363631;
   --color-desert-950: #1b1b18;
 
-  --color-opium-50: #f9f7f7;
-  --color-opium-100: #f3edee;
-  --color-opium-200: #e9dfe0;
-  --color-opium-300: #d9c8ca;
-  --color-opium-400: #c2a7a9;
-  --color-opium-500: #ab898c;
-  --color-opium-600: #936f72;
-  --color-opium-700: #7a5b5e;
-  --color-opium-800: #674d4f;
-  --color-opium-900: #584446;
-  --color-opium-950: #2d2223;
-
   --color-pearl: #12202a;
-  --color-charcoal: #0c1821;
+
+  --color-charcoal-50: oklch(0.976 0.008 241.7);
+  --color-charcoal-100: oklch(0.95 0.015 241.8);
+  --color-charcoal-200: oklch(0.896 0.033 232.2);
+  --color-charcoal-300: oklch(0.807 0.061 231.1);
+  --color-charcoal-400: oklch(0.707 0.092 231.5);
+  --color-charcoal-500: oklch(0.621 0.103 234.3);
+  --color-charcoal-600: oklch(0.533 0.097 237.9);
+  --color-charcoal-700: oklch(0.455 0.083 240.4);
+  --color-charcoal-800: oklch(0.409 0.069 238.4);
+  --color-charcoal-900: oklch(0.368 0.055 239);
+  --color-charcoal-950: oklch(0.202 0.025 241.9);
+
+  --color-pearl-950: oklch(0.1 0.007 264);
+  --color-pearl-900: oklch(0.189 0.013 264);
+  --color-pearl-800: oklch(0.278 0.019 264);
+  --color-pearl-700: oklch(0.367 0.025 264);
+  --color-pearl-600: oklch(0.456 0.031 264);
+  --color-pearl-500: oklch(0.544 0.026 264);
+  --color-pearl-400: oklch(0.633 0.021 264);
+  --color-pearl-300: oklch(0.722 0.015 264);
+  --color-pearl-200: oklch(0.811 0.01 264);
+  --color-pearl-100: oklch(0.9 0.005 264);
 }
 
 @layer base {
   body {
-    @apply transition-colors duration-300 text-desert-900 bg-desert-50 dark:bg-desert-950 font-sans;
+    @apply transition-colors duration-300 text-desert-900 bg-desert-50 dark:bg-charcoal-950 font-sans;
   }
 
   button {
