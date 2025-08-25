@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { Button } from 'react-aria-components'
 
-import { GITHUB_URL } from '@/helpers/constants'
+import { GITHUB_URL, X_URL } from '@/helpers/constants'
 import { useAppTheme } from '@/hooks/useAppTheme'
 
 import GithubIcon from '@/assets/github.svg'
@@ -45,7 +45,7 @@ export default function Header() {
           </a>
 
           <a
-            href={GITHUB_URL}
+            href={X_URL}
             className="hover:text-desert-900 transition-colors dark:hover:text-desert-300"
             target="_blank"
             rel="noopener"
