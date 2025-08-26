@@ -63,9 +63,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       data-lt-installed="true"
       suppressHydrationWarning={true}
     >
-      <body>
-        <script defer src="https://assets.onedollarstats.com/stonks.js"></script>
+      <script defer src="https://assets.onedollarstats.com/stonks.js"></script>
 
+      <body>
         <ThemeProvider>
           <Provider>{children}</Provider>
         </ThemeProvider>
