@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Script from 'next/script'
 
 import { Provider } from 'jotai'
 import localFont from 'next/font/local'
@@ -63,13 +64,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       data-lt-installed="true"
       suppressHydrationWarning={true}
     >
-      <script defer src="https://assets.onedollarstats.com/stonks.js"></script>
-
       <body>
         <ThemeProvider>
           <Provider>{children}</Provider>
         </ThemeProvider>
       </body>
+
+      <Script src="https://assets.onedollarstats.com/stonks.js" />
     </html>
   )
 }
