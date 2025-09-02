@@ -1,8 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next'
+
+import { getDeploymentId, initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
+
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   webpack(config) {
-    const fileLoaderRule = config.module.rules.find(rule => rule.test?.test?.('.svg'))
+    const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.('.svg'))
 
     config.module.rules.push(
       {
@@ -32,6 +35,10 @@ const nextConfig = {
       },
     },
   },
+  deploymentId: getDeploymentId(),
 }
 
-module.exports = nextConfig
+export default nextConfig
+
+// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
+initOpenNextCloudflareForDev()
