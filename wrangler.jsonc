@@ -11,5 +11,9 @@
   "preview_urls": true,
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    { "pattern": "www.datetimedojo.com", "custom_domain": true },
+    { "pattern": "datetimedojo.com", "custom_domain": true }
+  ]
 }
