@@ -38,5 +38,15 @@
     "tailwindcss-react-aria-components": "^2.0.0",
     "typescript": "^5.9.2",
     "wrangler": "4.31.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      " esbuild",
+      " lefthook",
+      " sharp",
+      " unrs-resolver",
+      " workerd"
+    ]
   }
 }
